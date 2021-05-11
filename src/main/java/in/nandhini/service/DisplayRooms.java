@@ -2,7 +2,7 @@ package in.nandhini.service;
 
 import java.util.HashMap;
 import java.util.Map;
-class DisplayRooms {
+public class DisplayRooms {
 	
 	/**
 	 * as constructor concept require at least one non-public constructor 
