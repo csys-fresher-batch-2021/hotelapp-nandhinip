@@ -12,7 +12,6 @@ public class TestDisplayRooms {
 	 */
 	@Test
 	public void test() {
-		DisplayRooms.displayRoomTypes();
 		Map<String, Double> output = DisplayRooms.getAvailableRooms();
 		assertEquals(3, output.size());
 	}
