@@ -1,6 +1,7 @@
 <!DOCTYPE html>
+<%@page import="in.nandhini.service.DisplayRooms"%>
 <%@page import="java.util.Map"%>
-<html>
+<html  lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Room Types</title>
@@ -11,17 +12,17 @@
 		<table class="table table-bordered">
 			<thead>
 				<tr>
-					<th>S.No</th>
-					<th>Room Types</th>
-					<th>Package Price(INR)</th>
-					<th>Choose</th>
+					<th scope="col">S.No</th>
+					<th scope="col">Room Types</th>
+					<th scope="col">Package Price(INR)</th>
+					<th scope="col">Choose</th>
 				</tr>
 			</thead>
 
 			<tbody>
 			<%
 			int i=0;
-			Map<String,Double>room =DisplayRooms.getAvailableRooms();
+			Map<String,Double>room = DisplayRooms.getRoomAvailable();
 			for (String rooms : room.keySet()) {
 				double price = room.get(rooms);
 				i++;
