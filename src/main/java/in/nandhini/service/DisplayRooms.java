@@ -14,7 +14,8 @@ class DisplayRooms {
 	/**
 	 * hash map declaration
 	 */
-	private static Map<String, Double> roomAvailable = new HashMap<String, Double>();
+	
+	private static Map<String, Double> roomAvailable = new HashMap<>();
 	static {
 		roomAvailable.put(MessageConstants.MOUNTAINVIEW, 25000.0);
 		roomAvailable.put(MessageConstants.OCEANVIEW, 20000.0);
