@@ -25,8 +25,12 @@ class DisplayRooms {
 	 * method to access the HashMap outside the class
 	 * @return HashMap
 	 */
-	public static Map<String, Double> getAvailableRooms() {
+	public static Map<String, Double> getRoomAvailable() {
 		return roomAvailable;
+	}
+
+	public static void setRoomAvailable(Map<String, Double> roomAvailable) {
+		DisplayRooms.roomAvailable = roomAvailable;
 	}
 
 	

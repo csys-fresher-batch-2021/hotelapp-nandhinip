@@ -12,7 +12,7 @@ public class TestDisplayRooms {
 	 */
 	@Test
 	public void test() {
-		Map<String, Double> output = DisplayRooms.getAvailableRooms();
+		Map<String, Double> output = DisplayRooms.getRoomAvailable();
 		assertEquals(3, output.size());
 	}
 
