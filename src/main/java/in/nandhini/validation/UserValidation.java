@@ -1,6 +1,5 @@
 package in.nandhini.validation;
 
-import com.sun.javafx.binding.Logging;
 import in.nandhini.service.UserManager;
 
 public class UserValidation {
@@ -29,7 +28,7 @@ public class UserValidation {
 			}
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
-			Logging.getLogger();
+			pwdIsValid="Invalid";
 		}
 		return pwdIsValid;
 	}
@@ -51,7 +50,7 @@ public class UserValidation {
 			}
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
-			Logging.getLogger();
+			mobIsValid="Invalid";
 		}
 
 		return mobIsValid;
