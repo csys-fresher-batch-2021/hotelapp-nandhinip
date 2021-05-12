@@ -10,6 +10,8 @@
 		<h3>Login Page</h3>
 		<form action="journeyDetails.html">
 		<table class="table table-borderless">
+		<caption></caption>
+		
 			<tbody>
 			<tr>
 			<th scope="col"><label for="user">Mobile Number</label></th>

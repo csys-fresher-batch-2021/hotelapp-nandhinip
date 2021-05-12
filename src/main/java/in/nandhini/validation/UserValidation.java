@@ -3,6 +3,14 @@ package in.nandhini.validation;
 import in.nandhini.service.UserManager;
 
 public class UserValidation {
+	
+	/**
+	 * as constructor concept require at least one non-public constructor 
+	 */
+	private UserValidation() {
+	    throw new IllegalStateException();
+	  }
+	
 	/**
 	 * getting password and checking whether it is valid or not
 	 * 
@@ -61,12 +69,12 @@ public class UserValidation {
 	/**
 	 * checking both mobile mobile number and password and then adding user
 	 */
-	public static boolean CheckAndAddUser(long mobileNo, String pwd,String name) {
-		boolean added = false;
+	public static Boolean checkAndAddUser(long mobileNo, String pwd,String name) {
+		Boolean added = false; 
 		String mobOutput = UserValidation.mobileNumberCheck(mobileNo);
 		String pwdOutput = UserValidation.userPasswordCheck(pwd);
-		boolean nameOutput=UserValidation.nameValidaion(name);
-		if (mobOutput == "Valid Mobile Number" && pwdOutput == "Valid Password" && nameOutput==true) {
+		Boolean nameOutput=UserValidation.nameValidaion(name);
+		if (mobOutput.equals("Valid Mobile Number") && pwdOutput.equals("Valid Password") && nameOutput.equals(true)) {
 			UserManager.addUser(mobileNo, pwd,name);
 			added = true;
 		}

@@ -4,6 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserManager {
+	
+	/**
+	 * as constructor concept require at least one non-public constructor 
+	 */
+	private UserManager() {
+	    throw new IllegalStateException();
+	  }
 	/**
 	 * User's List
 	 */

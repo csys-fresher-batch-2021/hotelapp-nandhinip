@@ -11,7 +11,7 @@
 	<form action="signUp" method="get">
 	
 	<table class="table table-borderless">
-	<caption>Sign-Up page</caption>
+	<caption></caption>
 	<tbody>
 	<tr>
 	<th scope="col"><label for=userName>Name</label></th>

@@ -17,8 +17,8 @@ public class TestUserDetails {
 		long mobileNo = 9876543299L;
 		String pwd = "12345678";
 		String name="Pert";
-		boolean output = UserValidation.CheckAndAddUser(mobileNo, pwd,name);
-		assertTrue(output == true);
+		Boolean output = UserValidation.checkAndAddUser(mobileNo, pwd,name);
+		assertEquals(true,output);
 	}
 
 	@Test
@@ -26,8 +26,8 @@ public class TestUserDetails {
 		long mobileNo = 98765431L;
 		String pwd = "123478";
 		String name="Peart";
-		boolean output = UserValidation.CheckAndAddUser(mobileNo, pwd,name);
-		assertTrue(output == false);
+		Boolean output = UserValidation.checkAndAddUser(mobileNo, pwd,name);
+		assertEquals(false,output);
 	}
 
 }
