@@ -10,7 +10,7 @@
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
 		<table class="table table-bordered">
-		<caption>Rooms available at "Bliss Hotel"</caption>
+		<caption>Accommodation Capability: 2-Adults, 2-Children</caption>
 			<thead>
 				<tr>
 					<th scope="col">S.No</th>
