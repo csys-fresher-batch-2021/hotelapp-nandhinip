@@ -1,16 +1,17 @@
 package in.nandhini.validation;
 
+import com.sun.javafx.binding.Logging;
 import in.nandhini.service.UserManager;
 
 public class UserValidation {
-	
+
 	/**
-	 * as constructor concept require at least one non-public constructor 
+	 * as constructor concept require at least one non-public constructor
 	 */
 	private UserValidation() {
-	    throw new IllegalStateException();
-	  }
-	
+		throw new IllegalStateException();
+	}
+
 	/**
 	 * getting password and checking whether it is valid or not
 	 * 
@@ -27,7 +28,8 @@ public class UserValidation {
 				pwdIsValid = "Valid Password";
 			}
 		} catch (IllegalArgumentException e) {
-			pwdIsValid = "Invalid Password";
+			e.printStackTrace();
+			Logging.getLogger();
 		}
 		return pwdIsValid;
 	}
@@ -43,39 +45,42 @@ public class UserValidation {
 		String mobIsValid = null;
 		try {
 			if (ph.length() != 10 || mobNo / 1000000000 == 0) {
-				throw new IllegalArgumentException();
+				throw new IllegalArgumentException("Invalid");
 			} else {
 				mobIsValid = "Valid Mobile Number";
 			}
 		} catch (IllegalArgumentException e) {
-			mobIsValid = "Invalid Mobile Number";
+			e.printStackTrace();
+			Logging.getLogger();
 		}
 
 		return mobIsValid;
 	}
-	
+
 	/**
 	 * To check whether the user enter the valid name or not
+	 * 
 	 * @param name
 	 * @return
 	 */
 	public static boolean nameValidaion(String name) {
-		boolean isValid=false;
-		if(name.length()>3 && name.length()<30 && name.matches( "[A-Z][a-z]*")) {
-			isValid=true;
-		}return isValid;
+		boolean isValid = false;
+		if (name.length() > 3 && name.length() < 30 && name.matches("[A-Z][a-z]*")) {
+			isValid = true;
+		}
+		return isValid;
 	}
 
 	/**
 	 * checking both mobile mobile number and password and then adding user
 	 */
-	public static Boolean checkAndAddUser(long mobileNo, String pwd,String name) {
-		Boolean added = false; 
+	public static Boolean checkAndAddUser(long mobileNo, String pwd, String name) {
+		Boolean added = false;
 		String mobOutput = UserValidation.mobileNumberCheck(mobileNo);
 		String pwdOutput = UserValidation.userPasswordCheck(pwd);
-		Boolean nameOutput=UserValidation.nameValidaion(name);
+		Boolean nameOutput = UserValidation.nameValidaion(name);
 		if (mobOutput.equals("Valid Mobile Number") && pwdOutput.equals("Valid Password") && nameOutput.equals(true)) {
-			UserManager.addUser(mobileNo, pwd,name);
+			UserManager.addUser(mobileNo, pwd, name);
 			added = true;
 		}
 		return added;

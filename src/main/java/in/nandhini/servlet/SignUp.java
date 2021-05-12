@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sun.javafx.binding.Logging;
+
 import in.nandhini.validation.UserValidation;
 
 /**
@@ -31,6 +33,7 @@ public class SignUp extends HttpServlet {
 			pwd = request.getParameter("password");
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
+			Logging.getLogger();
 		}
 
 		// checking the details are valid or not
@@ -42,6 +45,7 @@ public class SignUp extends HttpServlet {
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
+			Logging.getLogger();
 		}
 	}
 
