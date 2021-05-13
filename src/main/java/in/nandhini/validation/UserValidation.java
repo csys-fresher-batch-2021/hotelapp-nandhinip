@@ -28,7 +28,7 @@ public class UserValidation {
 			}
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
-			pwdIsValid="Invalid";
+			pwdIsValid="Invalid Password";
 		}
 		return pwdIsValid;
 	}
@@ -44,13 +44,13 @@ public class UserValidation {
 		String mobIsValid = null;
 		try {
 			if (ph.length() != 10 || mobNo / 1000000000 == 0) {
-				throw new IllegalArgumentException("Invalid");
+				throw new IllegalArgumentException();
 			} else {
 				mobIsValid = "Valid Mobile Number";
 			}
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
-			mobIsValid="Invalid";
+			mobIsValid="Invalid Mobile Number";
 		}
 
 		return mobIsValid;
