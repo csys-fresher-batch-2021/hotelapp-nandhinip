@@ -2,8 +2,9 @@ package in.nandhini.service;
 
 import java.util.HashMap;
 import java.util.Map;
+
 public class DisplayRooms {
-	
+
 	/**
 	 * as constructor concept require at least one non-public constructor 
 	 */
@@ -12,7 +13,7 @@ public class DisplayRooms {
 	}
 	
 	/**
-	 * hash map declaration
+	 * hash map declaration for rooms available
 	 */
 	
 	private static Map<String, Double> roomAvailable = new HashMap<>();
@@ -30,9 +31,4 @@ public class DisplayRooms {
 		return roomAvailable;
 	}
 
-	public static void setRoomAvailable(Map<String, Double> roomAvailable) {
-		DisplayRooms.roomAvailable = roomAvailable;
-	}
-
-	
 }
