@@ -17,4 +17,5 @@ class MessageConstants {
 	public static final String MOUNTAINVIEW = "Mountain View";
 	public static final String OCEANVIEW = "Night Ocean View";
 	public static final String CITYVIEW = "Night City View";
+	
 }
