@@ -62,9 +62,23 @@ public class UserValidation {
 	 * @param name
 	 * @return
 	 */
-	public static boolean nameValidaion(String name) {
+	public static boolean nameValidation(String name) {
 		boolean isValid = false;
-		if (name.length() > 3 && name.length() < 30 && name.matches("[A-Z][a-z]*")) {
+		if (name.length() > 3 && name.length() < 30 && name.matches("[a-z]*")) {
+			isValid = true;
+		}
+		return isValid;
+	}
+	
+	/**
+	 * To check whether the user enter the valid name or not
+	 * 
+	 * @param name
+	 * @return
+	 */
+	public static boolean genderValidation(String name) {
+		boolean isValid = false;
+		if (name.length() > 3 && name.length() < 30 && name.matches("[A-Za-z]*")) {
 			isValid = true;
 		}
 		return isValid;
@@ -73,13 +87,13 @@ public class UserValidation {
 	/**
 	 * checking both mobile mobile number and password and then adding user
 	 */
-	public static Boolean checkAndAddUser(long mobileNo, String pwd, String name) {
+	public static Boolean checkAndAddUser(long mobileNo, String pwd, String name,String gender) {
 		Boolean added = false;
 		String mobOutput = UserValidation.mobileNumberCheck(mobileNo);
 		String pwdOutput = UserValidation.userPasswordCheck(pwd);
-		Boolean nameOutput = UserValidation.nameValidaion(name);
-		if (mobOutput.equals("Valid Mobile Number") && pwdOutput.equals("Valid Password") && nameOutput.equals(true)) {
-			UserManager.addUser(mobileNo, pwd, name);
+		Boolean nameOutput = UserValidation.nameValidation(name);
+		if (mobOutput.equals("Valid Mobile Number") && pwdOutput.equals("Valid Password") && nameOutput) {
+			UserManager.addUser(mobileNo, pwd, name,gender);
 			added = true;
 		}
 		return added;

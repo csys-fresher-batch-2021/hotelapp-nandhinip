@@ -8,7 +8,7 @@ import org.junit.Test;
 
 public class TestDisplayRooms {
 	/**
-	 * to Display the rooms and check with no of accommodation types
+	 * to Display the rooms and check with no of rooms types
 	 */
 	@Test
 	public void test() {
