@@ -8,14 +8,14 @@
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
 		<h3>Login Page</h3>
-		<form action="journeyDetails.html">
+		<form action="LoginServlet" method="post">
 		<table class="table table-borderless">
 		<caption></caption>
 		
 			<tbody>
 			<tr>
-			<th scope="col"><label for="user">Mobile Number</label></th>
-			<th scope="col"> <input type="tel" name="Mobile Number" id="user" placeholder="Mobile Number" pattern="[0-9]{10}" required autofocus></th>
+			<th scope="col"><label for=username>Name</label></th>
+	<th scope="col"><input type=text name="username" id="username" placeholder="Your name" pattern="[a-z]{3,30}" required autofocus></th> 
 			</tr>
 			
 		    <tr>
@@ -24,11 +24,13 @@
 		    </tr>
 			</tbody>
 		</table>
-		<button type="submit" class="btn btn-success">Login</button>
+		<button type="submit"class="btn btn-success">Login</button>
 		<a href="SignUp.jsp" class="btn btn-secondary" role="button">Sign-Up</a>
-		<button type="button" onClick="window.location.reload()" class="btn btn-danger">Reset</button>
-		<a href="signUp.jsp"></a>	
+		<button type="reset"class="btn btn-danger">Reset</button>	
+		<a href="forgotPwd.jsp" class="btn btn-danger">Forgot Password</a>
 		</form>
 	</main>
+	<br/>
+	<jsp:include page="Footer.jsp"></jsp:include>
 </body>
 </html>
