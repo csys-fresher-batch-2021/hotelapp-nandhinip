@@ -17,7 +17,7 @@ public class TestUserDetails {
 		long mobileNo = 9876543299L;
 		String pwd = "12345678";
 		String name="Pert";
-		Boolean output = UserValidation.checkAndAddUser(mobileNo, pwd,name);
+		Boolean output = UserValidation.checkAndAddUser(mobileNo, pwd,name,"Female");
 		assertEquals(true,output);
 	}
 
@@ -26,8 +26,16 @@ public class TestUserDetails {
 		long mobileNo = 98765431L;
 		String pwd = "123478";
 		String name="Peart";
-		Boolean output = UserValidation.checkAndAddUser(mobileNo, pwd,name);
+		Boolean output = UserValidation.checkAndAddUser(mobileNo, pwd,name,null);
 		assertEquals(false,output);
+	}
+	
+	@Test
+	public void getPwdByMobNo() {
+		long mobNo=9999888889L;
+		String pwd=UserManager.getPwd(mobNo);
+		assertEquals("qwer1234", pwd);
+		//String HA=UserInfo.toString();
 	}
 
 }
