@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import in.nandhini.service.FindUserAndAdmin;
+import in.nandhini.service.UserManager;
 
 /**
  * Servlet implementation class LoginServlet
@@ -26,21 +27,22 @@ public class LoginServlet extends HttpServlet {
 		System.out.println("######## Login Servlet ###########");
 		HttpSession session = request.getSession();
 		// Step 1: Get form values
-		String username = request.getParameter("username");
+		String userPh = request.getParameter("userPh");
 		String password = request.getParameter("password");
+		Long userMobNo = Long.parseLong(userPh);
 		
-		boolean adminValid=FindUserAndAdmin.getAdmin(username, password);
-		boolean userValid=FindUserAndAdmin.getUser(username, password);
+		
+		boolean adminValid=FindUserAndAdmin.getAdmin(userMobNo, password);
+		boolean userValid=FindUserAndAdmin.validLogin(userMobNo, password);
 		if (adminValid) {
-			session.setAttribute("LOGGED_IN_USER", username);
+			session.setAttribute("LOGGED_IN_USER", "admin");
 			session.setAttribute("ROLE", "role");
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/EditRoom.jsp");
 			dispatcher.forward(request, response);
-			System.out.println(username);
 		} else if (userValid) {
+			String username=UserManager.getName(userMobNo);
 			session.setAttribute("LOGGED_IN_USER", username);
 			response.sendRedirect("index.jsp");
-			System.out.println(username);
 		} else {
 			response.sendRedirect("login.jsp?errorMessage=Invalid login credentials");
 		}

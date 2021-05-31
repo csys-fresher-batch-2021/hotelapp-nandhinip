@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.nandhini.dao.UserDAOInsert;
+import in.nandhini.dao.UserDAOSearchUserDetail;
 import in.nandhini.model.UserInfo;
 
 public class UserManager {
@@ -32,14 +33,25 @@ public class UserManager {
 	 */
 	public static String getPwd(long mobNo) {
 		String pwd = null;
-		for (UserInfo user_Info : userDetails) {
-			Long mobileNo = user_Info.getMobileNo();
-			if (mobileNo.equals(mobNo)) {
-				pwd = user_Info.getPassword();
-				break;
-			}
+		try {
+			pwd=UserDAOSearchUserDetail.getPwd(mobNo);
+			System.out.println(pwd);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return pwd;
+	}
+	
+	public static boolean userExists(long mobNo) {
+		boolean exists = false;
+		try {
+			exists = UserDAOSearchUserDetail.exists(mobNo);
+			System.out.println(exists);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return exists;
+		
 	}
 
 	/**
@@ -55,5 +67,21 @@ public class UserManager {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	/**
+	 * get Name of the particular user from database
+	 * @param mobNo
+	 * @return
+	 */
+	public static String getName(long mobNo) {
+		String name=null;
+		try {
+			name = UserDAOSearchUserDetail.getName(mobNo);
+			System.out.println(name);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return name;
 	}
 }

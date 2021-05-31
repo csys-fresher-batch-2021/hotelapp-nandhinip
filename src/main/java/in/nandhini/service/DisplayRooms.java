@@ -5,7 +5,6 @@ import java.util.Map;
 
 import in.nandhini.model.MessageConstants;
 
-
 public class DisplayRooms {
 
 	/**
@@ -16,7 +15,7 @@ public class DisplayRooms {
 	}
 
 	/**
-	 * hash map declaration for rooms available
+	 * hash map declaration
 	 */
 
 	private static Map<String, Double> roomAvailable = new HashMap<>();
@@ -34,4 +33,9 @@ public class DisplayRooms {
 	public static Map<String, Double> getRoomAvailable() {
 		return roomAvailable;
 	}
+
+	public static void setRoomAvailable(Map<String, Double> roomAvailable) {
+		DisplayRooms.roomAvailable = roomAvailable;
+	}
+
 }

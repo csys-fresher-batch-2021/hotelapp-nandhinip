@@ -32,7 +32,7 @@ public class UserDAOInsert {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new Exception("Unable to add product");
+			throw new RuntimeException("Unable to add user");
 		} finally {
 
 			DBClose.close(pst, con);
@@ -40,7 +40,7 @@ public class UserDAOInsert {
 	}
 	
 
-	public static void save(List<UserInfo> users) throws Exception, SQLException {
+	public static void save(List<UserInfo> users) throws Exception{
 		for (UserInfo user : users) {
 			save(user);	
 		}

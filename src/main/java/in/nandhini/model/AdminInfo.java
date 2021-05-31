@@ -13,22 +13,16 @@ public class AdminInfo {
 	/**
 	 * Administrator
 	 */
-	private static Map<String,String>admin=new HashMap<>();
+	private static Map<String,Long>admin=new HashMap<>();
 	
-	public static Map<String, String> getAdmin() {
+	public static Map<String, Long> getAdmin() {
 		return admin;
 	}
-	public static void setAdmin(Map<String, String> admin) {
+	public static void setAdmin(Map<String, Long> admin) {
 		AdminInfo.admin = admin;
 	}
 	static {
-	admin.put("admin123", "admin");
+	admin.put("admin123", 9900990090L);
 	}
 	
-	public static String adminName() {
-		String name=null;
-		for (String user_Info : admin.keySet()) {
-			name=user_Info;
-		}return name;
-	}
 }
