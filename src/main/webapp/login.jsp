@@ -14,8 +14,9 @@
 		
 			<tbody>
 			<tr>
-			<th scope="col"><label for=username>Name</label></th>
-	<th scope="col"><input type=text name="username" id="username" placeholder="Your name" pattern="[a-z]{3,30}" required autofocus></th> 
+			<tr>
+			<th scope="col"><label for="MobileNumber">Mobile Number</label> </th>
+			<th scope="col"><input type="tel" name="userPh" id="userPh" placeholder="10-digit number"pattern="[0-9]{10}" min=0 required></th>  
 			</tr>
 			
 		    <tr>

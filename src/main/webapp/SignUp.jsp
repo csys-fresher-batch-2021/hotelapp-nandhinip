@@ -15,12 +15,12 @@
 	<tbody>
 	<tr>
 	<th scope="col"><label for=userName>Name</label></th>
-	<th scope="col"><input type=text name="name" id="userName" placeholder="Your name" pattern="[a-z]{3,30}" required autofocus></th> 
+	<th scope="col"><input type=text name="name" id="userName" placeholder="Lower Case Name" pattern="[a-z]{3,30}" required autofocus></th> 
 	</tr>
 	
 	<tr>
 	<th scope="col"><label for="MobileNumber">Mobile Number</label> </th>
-	<th scope="col"><input type="tel" name="MobileNumber" id="userMobile" placeholder="Mobile Number"pattern="[0-9]{10}" required></th>  
+	<th scope="col"><input type="tel" name="MobileNumber" id="userMobile" placeholder="10-Digit Number"pattern="[0-9]{10}" min=0 required></th>  
 	</tr>
 	
 	<tr>
