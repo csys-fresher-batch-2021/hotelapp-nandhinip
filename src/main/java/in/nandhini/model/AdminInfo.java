@@ -3,12 +3,12 @@ package in.nandhini.model;
 import java.util.HashMap;
 import java.util.Map;
 
-import in.nandhini.exception.IllegalArgumentExp;
+import in.nandhini.exception.InvalidEntry;
 
 public class AdminInfo {
 
-	private AdminInfo() {
-	    IllegalArgumentExp.illegalArgumentConstructor();
+	private AdminInfo() throws InvalidEntry {
+	    throw new InvalidEntry("Invalid Entry into constructor");
 	  }
 	/**
 	 * Administrator

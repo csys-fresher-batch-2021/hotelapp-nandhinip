@@ -1,13 +1,12 @@
 package in.nandhini.service;
 
-import in.nandhini.exception.IllegalArgumentExp;
-import in.nandhini.exception.RunTimeExp;
+import in.nandhini.exception.InvalidEntry;
 import in.nandhini.validation.CardValidation;
 
 public class OnlinePayment {
-	
-	private OnlinePayment() {
-		IllegalArgumentExp.illegalArgumentConstructor();
+
+	private OnlinePayment() throws InvalidEntry {
+		throw new InvalidEntry("Invalid Entry into constructor");
 	}
 
 	public static boolean allCardOrientedValidityCheck(String cardNo, String year, String cvv) {
@@ -18,7 +17,7 @@ public class OnlinePayment {
 		if (cardNoValid && yearValid && cvvValid) {
 			valid = true;
 		} else {
-			RunTimeExp.cardValidation();
+			throw new IllegalArgumentException("Invalid Card");
 		}
 		return valid;
 	}

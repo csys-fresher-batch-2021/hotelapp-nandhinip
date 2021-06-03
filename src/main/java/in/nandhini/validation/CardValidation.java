@@ -2,7 +2,8 @@ package in.nandhini.validation;
 
 import java.time.YearMonth;
 
-import in.nandhini.exception.IllegalArgumentExp;
+import in.nandhini.exception.InvalidException;
+import in.nandhini.model.MessageConstants;
 
 public class CardValidation {
 
@@ -12,14 +13,15 @@ public class CardValidation {
 	 * 
 	 * @param cardex
 	 * @return boolean
+	 * @throws InvalidException 
 	 */
-	public static boolean creditcardValidyear(String cardex) {
+	public static boolean creditcardValidyear(String cardex)  {
 		boolean valid=true;
 		YearMonth cardexpirydate = YearMonth.parse(cardex);
 		YearMonth now = YearMonth.now();
 		if (cardexpirydate.isBefore(now)) {
 			valid =false;
-			IllegalArgumentExp.cardExpired();
+			throw new IllegalArgumentException(MessageConstants.CARD_EXPIRED);
 		}
 		return valid;
 	}
@@ -29,13 +31,13 @@ public class CardValidation {
 	 * 
 	 * @param CardNumber
 	 * @return
+	 * @throws InvalidException 
 	 */
 	public static boolean cardNumberLength(String cardNumber) {
 		boolean valid=true;
 		String cardNumberTrim = cardNumber.trim();
 		if (cardNumberTrim.length() != 16){// TO CHECK THE LENGTH OF A STRING
-			valid =false;
-			IllegalArgumentExp.invalidCardNo();
+			throw new IllegalArgumentException(MessageConstants.INVALID_CARD_NO);
 		}
 		return valid;
 	}
@@ -47,7 +49,7 @@ public class CardValidation {
 		if( regex && len) {
 			valid=true;
 		}else {
-			IllegalArgumentExp.invalidCVV();
+			throw new IllegalArgumentException(MessageConstants.CVV);
 		}
 		return valid;
 	}

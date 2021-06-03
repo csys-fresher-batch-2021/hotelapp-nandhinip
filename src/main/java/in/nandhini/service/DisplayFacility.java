@@ -3,12 +3,12 @@ package in.nandhini.service;
 import java.util.HashMap;
 import java.util.Map;
 
-import in.nandhini.exception.IllegalArgumentExp;
+import in.nandhini.exception.InvalidEntry;
 import in.nandhini.model.MessageConstants;
 
 public class DisplayFacility {
-	private DisplayFacility() {
-		IllegalArgumentExp.illegalArgumentConstructor();
+	private DisplayFacility() throws InvalidEntry {
+		throw new InvalidEntry("Invalid Entry into constructor");
 	}
 
 	/**

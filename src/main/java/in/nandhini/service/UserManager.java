@@ -35,7 +35,6 @@ public class UserManager {
 		String pwd = null;
 		try {
 			pwd=UserDAOSearchUserDetail.getPwd(mobNo);
-			System.out.println(pwd);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

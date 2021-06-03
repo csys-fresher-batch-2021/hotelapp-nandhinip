@@ -91,7 +91,7 @@ public class UserDAOSearchUserDetail{
 			}
 
 		} catch (SQLException e) {
-			throw new Exception("Unable to fetch user Name");
+			throw new Exception("user does'nt exists");
 		} finally {
 			DBClose.close(rs, pst, con);
 		}
