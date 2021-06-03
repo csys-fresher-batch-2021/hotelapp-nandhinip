@@ -4,7 +4,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import in.nandhini.exception.InvalidException;
+
 public class DBConnection {
+
+	private DBConnection() throws InvalidException {
+		throw new InvalidException("Invalid Entry");
+	}
 
 	private static final String DRIVER_CLASS_NAME = "org.postgresql.Driver";
 	private static final String DATABASE_NAME = "hotel_db";

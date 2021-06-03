@@ -4,7 +4,13 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import in.nandhini.exception.InvalidException;
+
 public class HourCalculator {
+
+	private HourCalculator() throws InvalidException {
+		throw new InvalidException("Invalid Entry");
+	}
 
 	/**
 	 * calculating total hours of stay using try catch exception concept
@@ -14,8 +20,8 @@ public class HourCalculator {
 	 * @return float type returns a total hours of stay in hotel
 	 */
 	public static double findingHours(String cin, String cout) {
-		String startDate=cin.substring(0, 16);
-		String endDate=cout.substring(0,16);
+		String startDate = cin.substring(0, 16);
+		String endDate = cout.substring(0, 16);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
 		double totalHour = 0;
 		// Try Class

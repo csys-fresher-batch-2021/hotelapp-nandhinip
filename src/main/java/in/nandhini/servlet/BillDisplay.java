@@ -32,6 +32,13 @@ public class BillDisplay extends HttpServlet {
 	@SuppressWarnings("unchecked")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+		/**
+		 * This servlet gets data from .jsp and add it to a list and send that to
+		 * service layer for further process
+		 * 
+		 * taking the details to database after pressing book button
+		 */
 		HttpSession session = request.getSession();
 		LinkedHashMap<String, Double> bill = (LinkedHashMap<String, Double>) session.getAttribute("BILL");
 		double price = bill.get("Total with GST");

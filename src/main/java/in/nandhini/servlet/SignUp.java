@@ -17,16 +17,16 @@ public class SignUp extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		// getting user name, mobile number and password
 
+		// getting user name, mobile number and password
 		String name = request.getParameter("name");
 		long mobileNo = Long.parseLong(request.getParameter("userMobile"));
 		String pwd = request.getParameter("pwd");
-		String gender=request.getParameter("gender");
+		String gender = request.getParameter("gender");
 		System.out.println(mobileNo);
-		// checking the details are valid or not
 
-		Boolean valid = UserValidation.checkAndAddUser(mobileNo, pwd, name,gender);
+		// checking the details are valid or not
+		Boolean valid = UserValidation.checkAndAddUser(mobileNo, pwd, name, gender);
 		if (valid) {
 			response.sendRedirect("login.jsp");// if valid redirect to login page
 		} else {

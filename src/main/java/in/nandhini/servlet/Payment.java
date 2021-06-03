@@ -1,13 +1,14 @@
 package in.nandhini.servlet;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
+import in.nandhini.exception.InvalidException;
 import in.nandhini.service.OnlinePayment;
 
 /**
@@ -29,7 +30,12 @@ public class Payment extends HttpServlet {
 		String validYr=request.getParameter("mon");
 		String cvvNo=request.getParameter("cvv");
 		
-		boolean valid=OnlinePayment.allCardOrientedValidityCheck(cardNo, validYr, cvvNo);
+		boolean valid = false;
+		try {
+			valid = OnlinePayment.allCardOrientedValidityCheck(cardNo, validYr, cvvNo);
+		} catch (InvalidException e) {
+			e.printStackTrace();
+		}
 		if (valid) {
 			response.sendRedirect("login.jsp");
 		}

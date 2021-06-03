@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
 /**
  * Servlet implementation class BookRoom
  */
@@ -30,9 +29,13 @@ public class LoginBeforeBooking extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		/**
+		 * this servlet invokes when you press book room button checks whether user is
+		 * logged in or not
+		 */
 		HttpSession session = request.getSession();
 		String loggedInUsername = (String) session.getAttribute("LOGGED_IN_USER");
-		if (loggedInUsername!=null) {
+		if (loggedInUsername != null) {
 			response.sendRedirect("RoomBooking.jsp");
 		} else {
 			response.sendRedirect("login.jsp?errorMessage=Kindly Login Before Booking");

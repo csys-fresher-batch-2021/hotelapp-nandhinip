@@ -19,18 +19,22 @@ import in.nandhini.service.Cart;
 @WebServlet("/cart")
 public class cart extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-   
-    public cart() {
-        super();
-    }
 
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session =request.getSession();
-		Long mobNo=(Long) session.getAttribute("MOB_NO");
-		List<CartInfo>yourCart=Cart.cartDetails(mobNo);
-		session.setAttribute("CART",yourCart);
+	public cart() {
+		super();
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+
+		/**
+		 * get particular user cart info and display it in their cart with json object
+		 */
+		Long mobNo = (Long) session.getAttribute("MOB_NO");
+		List<CartInfo> yourCart = Cart.cartDetails(mobNo);
+		session.setAttribute("CART", yourCart);
 		response.sendRedirect("Cart.jsp");
-		
+
 	}
 }

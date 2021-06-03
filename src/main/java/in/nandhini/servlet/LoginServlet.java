@@ -21,14 +21,18 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		System.out.println("######## Login Servlet ###########");
+		/**
+		 * get data from web page
+		 */
 		HttpSession session = request.getSession();
 		// Step 1: Get form values
 		String userPh = request.getParameter("userPh");
 		Long userMobNo = Long.parseLong(userPh);
 		String password = request.getParameter("pwd");
 		
+		/**
+		 * check whether it is admin or not and take assigned action
+		 */
 		boolean adminValid = false;
 		try {
 			adminValid = FindUserAndAdmin.getAdmin(userMobNo, password);

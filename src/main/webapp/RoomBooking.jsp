@@ -1,9 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
 <meta charset="utf-8" />
 <title>room Booking</title>
+<style>
+div {
+  margin-bottom: 15px;
+  padding: 4px 12px;
+}
+.info {
+  background-color: #e7f3fe;
+  border-left: 6px solid #2196F3;
+}
+
+</style>
 </head>
 <body>
 
@@ -89,18 +99,22 @@
 						console.log(res);
 						let data = [];
 						data = res;
-						for(var i=0; i<op;i++){
-							console.log(op[i]);
-							(data[0]>1)?op[i].disabled=true:op[i].disabled=false;
-							(data[1]>1)?op[i].disabled=true:op[i].disabled=false;
-							(data[2]>1)?op[i].disabled=true:op[i].disabled=false;
-						}
-						
+						console.log(op)
+							console.log(op[1]);
+							(data[0]>1)?op[1].disabled=true:op[1].disabled=false;
+							(data[1]>9)?op[2].disabled=true:op[2].disabled=false;
+							(data[2]>9)?op[3].disabled=true:op[3].disabled=false;
 						});
 					}
 				availability();
 			</script>
 		</form>
+		<div  class="info">
+		<strong>Option will be disabled, if there is no availability</strong>
+		 <p><strong>! </strong> Mountain View Room: Availability - 2</p>
+		 <p><strong>! </strong> Night Ocean View Room: Availability - 10</p>
+		  <p><strong>! </strong> Night City View Room: Availability - 10</p>
+		  </div>
 		</main>
 
 </body>

@@ -15,6 +15,14 @@ import in.nandhini.util.DBConnection;
 
 public class BookingDAO {
 
+	/**
+	 * insert user booking details in DAO
+	 * 
+	 * @param choice
+	 * @param bookDate
+	 * @throws Exception
+	 * @throws SQLException
+	 */
 	public static void save(List<Object> choice, LocalDateTime bookDate) throws Exception, SQLException {
 		// Step 1: Get connection
 		Connection con = null;
@@ -30,8 +38,8 @@ public class BookingDAO {
 			pst.setLong(1, (long) choice.get(0));
 			Timestamp bookingDate = Timestamp.valueOf(bookDate);
 			pst.setTimestamp(2, bookingDate);
-			LocalDateTime cin= LocalDateTime.parse((CharSequence) choice.get(1));
-			Timestamp checkIn=Timestamp.valueOf(cin);
+			LocalDateTime cin = LocalDateTime.parse((CharSequence) choice.get(1));
+			Timestamp checkIn = Timestamp.valueOf(cin);
 			pst.setTimestamp(3, checkIn);
 			pst.setString(4, (String) choice.get(2));
 			pst.setString(5, (String) choice.get(3));
@@ -53,6 +61,12 @@ public class BookingDAO {
 		}
 	}
 
+	/**
+	 * retrieve booking details of user from DAO
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
 	public static List<BookingInfo> getAllBookingDetails() throws Exception {
 		List<BookingInfo> bookingDetails = new ArrayList<BookingInfo>();
 		Connection con = null;
@@ -84,7 +98,7 @@ public class BookingDAO {
 				double amount = rs.getDouble("bill_amount_estimation");
 				boolean status = rs.getBoolean("status");
 				Timestamp modDate = rs.getTimestamp("modified_date");
-			
+
 				BookingInfo bookDetail = new BookingInfo(mobNo, name, bookDate, checkin, suiteType, acChoice,
 						poolChoice, tansport, amount, status, modDate);
 				bookingDetails.add(bookDetail);
@@ -98,112 +112,122 @@ public class BookingDAO {
 		}
 		return bookingDetails;
 	}
-	
+
+	/**
+	 * Check "Mountain View Room" availability
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
 	public static int getMVRoomAvailability() throws Exception {
 
 		Connection con = null;
 		PreparedStatement pst = null;
-		ResultSet rs=null;
+		ResultSet rs = null;
 		int mv = 0;
 		try {
 
 			// Step 1: Get the connection
 			con = DBConnection.getConnection();
-			
+
 			// Step 2: Query
 			String sql = "SELECT COUNT(*) as Count from bookRoom WHERE check_in >= now()"
 					+ "and status=true AND suite_Type='Mountain View'";
 			pst = con.prepareStatement(sql);
-			
+
 			// Step 3: execute query
 			rs = pst.executeQuery();
-			
-			if (rs.next()) 
-			{
-	 
-			  mv = rs.getInt("Count"); 
-			  System.out.println("MV"+mv);
+
+			if (rs.next()) {
+
+				mv = rs.getInt("Count");
 			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new Exception("Unable to fetch user MV Room Availability");
 		} finally {
-			DBClose.close( pst, con);
+			DBClose.close(pst, con);
 		}
 		return mv;
 	}
-	
-	
+
+	/**
+	 * Check "Night Ocean View Room" availability
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
 	public static int getOVRoomAvailability() throws Exception {
 
 		Connection con = null;
 		PreparedStatement pst = null;
-		ResultSet rs=null;
+		ResultSet rs = null;
 		int ov = 0;
 		try {
 
 			// Step 1: Get the connection
 			con = DBConnection.getConnection();
-			
+
 			// Step 2: Query
 			String sql = "SELECT COUNT(*) as Count from bookRoom WHERE check_in >= now()"
 					+ "and status=true AND suite_Type='Night Ocean View'";
 			pst = con.prepareStatement(sql);
-			
+
 			// Step 3: execute query
 			rs = pst.executeQuery();
-			
-			if (rs.next()) 
-			{
-	 
-			  ov = rs.getInt("Count"); 
-			  System.out.println("OV"+ov);
+
+			if (rs.next()) {
+
+				ov = rs.getInt("Count");
 			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new Exception("Unable to fetch user MV Room Availability");
 		} finally {
-			DBClose.close( pst, con);
+			DBClose.close(pst, con);
 		}
 		return ov;
 	}
-	
+
+	/**
+	 * Check "Night City View Room" availability
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
 	public static int getCVRoomAvailability() throws Exception {
 
 		Connection con = null;
 		PreparedStatement pst = null;
-		ResultSet rs=null;
+		ResultSet rs = null;
 		int cv = 0;
 		try {
 
 			// Step 1: Get the connection
 			con = DBConnection.getConnection();
-			
+
 			// Step 2: Query
 			String sql = "SELECT COUNT(*) as Count from bookRoom WHERE check_in >= now()"
 					+ "and status=true AND suite_Type=''";
 			pst = con.prepareStatement(sql);
-			
+
 			// Step 3: execute query
 			rs = pst.executeQuery();
-			
-			if (rs.next()) 
-			{
-	 
-			  cv = rs.getInt("Count"); 
-			  System.out.println("CV"+cv);
+
+			if (rs.next()) {
+
+				cv = rs.getInt("Count");
 			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new Exception("Unable to fetch user MV Room Availability");
 		} finally {
-			DBClose.close( pst, con);
+			DBClose.close(pst, con);
 		}
 		return cv;
 	}
-	
-	
+
 }

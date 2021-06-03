@@ -20,13 +20,18 @@ import in.nandhini.service.Booking;
 @WebServlet("/RoomAvailability")
 public class RoomAvailability extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
-    public RoomAvailability() {
-        super();
-    }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Integer>avail=Booking.getAvailability();
+	public RoomAvailability() {
+		super();
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		/**
+		 * get availability of room from service layer to jsp as json object
+		 */
+		List<Integer> avail = Booking.getAvailability();
 		PrintWriter out = response.getWriter();
 		Gson gson = new Gson();
 		String object = gson.toJson(avail);
@@ -34,6 +39,5 @@ public class RoomAvailability extends HttpServlet {
 		out.println(object);
 		out.flush();
 	}
-
 
 }

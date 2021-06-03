@@ -1,7 +1,9 @@
 package in.nandhini.model;
 
 public class UserInfo {
-
+	/**
+	 * User Info Details in List
+	 */
 	public Long mobileNo;
 	public String password;
 	public String userName;

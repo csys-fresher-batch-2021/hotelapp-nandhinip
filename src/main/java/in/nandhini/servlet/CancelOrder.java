@@ -17,20 +17,24 @@ import in.nandhini.service.Cart;
 @WebServlet("/CancelOrder")
 public class CancelOrder extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
-    public CancelOrder() {
-        super();
-    }
-    
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String idStr=request.getParameter("id");
-		Integer id=Integer.parseInt(idStr);
-		boolean cancelled=Cart.cancelOrder(id);
+
+	public CancelOrder() {
+		super();
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		/**
+		 * getting the id number from service layer and updating the particular booking
+		 * details as false
+		 */
+		String idStr = request.getParameter("id");
+		Integer id = Integer.parseInt(idStr);
+		boolean cancelled = Cart.cancelOrder(id);
 		request.setAttribute("CANCELLED", cancelled);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("cart");
 		dispatcher.forward(request, response);
 	}
-
-	
 
 }
