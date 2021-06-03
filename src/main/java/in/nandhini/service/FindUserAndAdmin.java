@@ -11,30 +11,45 @@ public class FindUserAndAdmin {
 		throw new InvalidEntry("Invalid Entry into constructor");
 	}
 
+	/**
+	 * Get the admin details from Model layer
+	 * 
+	 * @param admin
+	 * @param password
+	 * @return
+	 * @throws InvalidException
+	 */
 	public static boolean getAdmin(Long admin, String password) throws InvalidException {
 		boolean valid = false;
 		Map<String, Long> administrator = AdminInfo.getAdmin();
-		try{
+		try {
 			for (String pwd : administrator.keySet()) {
-			long adminPh = administrator.get(pwd);
-			if (adminPh==(admin) && pwd.equals(password)) {
-				valid = true;
-				break;
+				long adminPh = administrator.get(pwd);
+				if (adminPh == (admin) && pwd.equals(password)) {
+					valid = true;
+					break;
+				}
 			}
+		} catch (NullPointerException e) {
+			throw new InvalidException("This is not an Admin");
 		}
-	}catch(NullPointerException e)
-	{
-		throw new InvalidException("This is not an Admin");
-	}return valid;
+		return valid;
 	}
 
+	/**
+	 * Check whether the login is valid or not
+	 * 
+	 * @param mobNo
+	 * @param givenPwd
+	 * @return
+	 */
 	public static boolean validLogin(long mobNo, String givenPwd) {
 		boolean userValid = false;
-		boolean exist=UserManager.userExists(mobNo);
-		if(exist) {
-			String storedPwd=UserManager.getPwd(mobNo);
-			if(storedPwd.equals(givenPwd)) {
-				userValid=true;
+		boolean exist = UserManager.userExists(mobNo);
+		if (exist) {
+			String storedPwd = UserManager.getPwd(mobNo);
+			if (storedPwd.equals(givenPwd)) {
+				userValid = true;
 				System.out.println(userValid);
 			}
 		}

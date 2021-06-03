@@ -32,14 +32,21 @@ public class ForgotPwd extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+		/**
+		 * getting the user mobile number from session and get password from service
+		 * layer.
+		 */
 		try {
 			String mobileNo = request.getParameter("mobNo");
 			Long userMobNo = Long.parseLong(mobileNo);
 			String pwd = UserManager.getPwd(userMobNo);
 
+			/**
+			 * Send the pwd as json object and displayed as alert.
+			 */
 			Gson gson = new Gson();
 			String password = gson.toJson(pwd);
-			System.out.println(password);
 			PrintWriter out = response.getWriter();
 			out.println(password);
 			out.flush();

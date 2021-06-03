@@ -42,6 +42,12 @@ public class CardValidation {
 		return valid;
 	}
 	
+	
+	/**
+	 * to check whether it is valid cvv or not
+	 * @param cvv
+	 * @return
+	 */
 	public static boolean cvvNo(String cvv) {
 		boolean valid=false;
 		boolean len=cvv.length()==3;

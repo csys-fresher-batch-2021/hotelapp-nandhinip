@@ -5,11 +5,23 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import in.nandhini.exception.InvalidEntry;
 import in.nandhini.util.DBClose;
 import in.nandhini.util.DBConnection;
 
-public class UserDAOSearchUserDetail{
+public class UserDAOSearchUserDetail {
 
+	private UserDAOSearchUserDetail() throws InvalidEntry {
+		throw new InvalidEntry("Invalid Entry");
+	}
+
+	/**
+	 * Get user name with their mobile number
+	 * 
+	 * @param mobNo
+	 * @return
+	 * @throws Exception
+	 */
 	public static String getName(long mobNo) throws Exception {
 
 		Connection con = null;
@@ -22,7 +34,7 @@ public class UserDAOSearchUserDetail{
 			con = DBConnection.getConnection();
 
 			// Step 2: Query
-			String sql = "select user_name from registered_user where mobile_No="+mobNo;
+			String sql = "select user_name from registered_user where mobile_No=" + mobNo;
 			pst = con.prepareStatement(sql);
 
 			// Step 3: execute query
@@ -38,8 +50,14 @@ public class UserDAOSearchUserDetail{
 		}
 		return name;
 	}
-	
-	
+
+	/**
+	 * get password of the user from mobile number
+	 * 
+	 * @param mobNo
+	 * @return
+	 * @throws Exception
+	 */
 	public static String getPwd(long mobNo) throws Exception {
 
 		Connection con = null;
@@ -52,7 +70,7 @@ public class UserDAOSearchUserDetail{
 			con = DBConnection.getConnection();
 
 			// Step 2: Query
-			String sql = "select pass_word from registered_user where mobile_No="+mobNo;
+			String sql = "select pass_word from registered_user where mobile_No=" + mobNo;
 			pst = con.prepareStatement(sql);
 
 			// Step 3: execute query
@@ -68,26 +86,33 @@ public class UserDAOSearchUserDetail{
 		}
 		return pwd;
 	}
-	
+
+	/**
+	 * To check whether the user exists or not
+	 * 
+	 * @param mobNo
+	 * @return
+	 * @throws Exception
+	 */
 	public static boolean exists(long mobNo) throws Exception {
 
 		Connection con = null;
 		PreparedStatement pst = null;
 		ResultSet rs = null;
-		boolean exists=false;
+		boolean exists = false;
 		try {
 
 			// Step 1: Get the connection
 			con = DBConnection.getConnection();
 
 			// Step 2: Query
-			String sql = "select mobile_No from registered_user where mobile_No="+mobNo;
+			String sql = "select mobile_No from registered_user where mobile_No=" + mobNo;
 			pst = con.prepareStatement(sql);
 
 			// Step 3: execute query
 			rs = pst.executeQuery();
 			if (rs.next()) {
-				exists=true;
+				exists = true;
 			}
 
 		} catch (SQLException e) {
