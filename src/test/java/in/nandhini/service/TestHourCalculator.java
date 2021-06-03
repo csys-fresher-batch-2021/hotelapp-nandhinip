@@ -11,8 +11,8 @@ public class TestHourCalculator {
 	 */
 	@Test
 	public void checkHourcalc() {
-		String startDate = "2021-06-06 01:10";// Given startDate
-		String endDate = "2021-06-06 06:30";// Given endDate
+		String startDate = "2021-06-06T01:10";// Given startDate
+		String endDate = "2021-06-06T06:30";// Given endDate
 		double output = HourCalculator.findingHours(startDate, endDate);
 		assertEquals(5.0,output,0.001);
 	}
@@ -21,11 +21,12 @@ public class TestHourCalculator {
 	 * to check with invalid date format
 	 */
 	@Test
-	public void InvaliddateCheck() {
-		String startDate = "2021-06 01:10";// Given startDate
-		String endDate = "2021-06-06 06:30";// Given endDate
+	public void validdateCheck() {
+		String startDate = "2021-06-05T01:10";// Given startDate
+		String endDate = "2021-06-06T06:30";// Given endDate
 		double output = HourCalculator.findingHours(startDate, endDate);
-		assertEquals(0.0,output,0.001);
+		System.out.println(output);
+		assertEquals(29.0,output,0.001);
 
 	}
 

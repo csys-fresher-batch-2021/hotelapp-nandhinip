@@ -25,8 +25,7 @@
 				<%
 				}else if(loggedInUsername.equals("admin")){
 				%>
-				<li class="nav-item">
-				<a class="nav-link" href="EditRoom.jsp">Booking Details</a></li>
+			
 				<%}else{%>
 				 <li class="nav-item active">
 				<a class="nav-link" href="index.jsp">Home <span class="sr-only">(current)</span></a>
@@ -57,7 +56,7 @@
 				}else{
 				%>
 				<li class="glyphicon glyphicon-shopping-cart">
-				<a class="nav-link" href="cart.jsp">Your Cart</a>
+				<a class="nav-link" href="cart">Your Cart</a>
 				</li>
 				<li class="nav-item"><a class="nav-link" href="#">Welcome <%=loggedInUsername%></a>
 				</li>

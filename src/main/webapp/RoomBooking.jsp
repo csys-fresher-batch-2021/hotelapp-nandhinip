@@ -66,7 +66,7 @@
 			</tr>
 			
 			<tr>
-			<th scope="col"><button type="submit" class="btn btn-secondary">submit</button></th>
+			<th scope="col"><button type="submit" class="btn btn-secondary">Estimate Price</button></th>
 			</tr>
 
 			</tbody>

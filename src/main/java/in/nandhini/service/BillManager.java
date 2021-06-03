@@ -17,11 +17,13 @@ public class BillManager {
 
 	public static LinkedHashMap<String, Double> totalBill(List<String> list) {
 		// checking Check-In date is valid or not
-		String startDate = list.get(0);
+		String startDate = null;
+		// checking Check-Out date is valid or not
+		String endDate = null;
+		startDate = list.get(0);
 		DateTime.checkInDate(startDate);
 
-		// checking Check-Out date is valid or not
-		String endDate = list.get(1);
+		endDate = list.get(1);
 		DateTime.checkOutDate(startDate, endDate);
 
 		// calculating total hours
@@ -29,7 +31,6 @@ public class BillManager {
 
 		// calculating amount with choice of room selection
 		String roomChoice = list.get(2);
-		System.out.println(roomChoice);
 		double roomCharge = RoomChoiceValidation.roomsPrice(roomChoice);
 
 		// calculating amount with choice of AC/NON-AC
@@ -46,7 +47,7 @@ public class BillManager {
 
 		// getting all individual amount and adding together to get a bill
 		double totalAmount = (acCharge * totalHours) + roomCharge + poolCharge + pickUpDropCharge;
-		System.out.println(totalAmount);
+		
 		// amount with 7% GST
 		double amountWithGst = (totalAmount * 0.07) + totalAmount;
 

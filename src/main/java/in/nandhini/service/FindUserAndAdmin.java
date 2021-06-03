@@ -1,17 +1,17 @@
 package in.nandhini.service;
 
 import java.util.Map;
-import in.nandhini.exception.IllegalArgumentExp;
-import in.nandhini.exception.NullPointerExp;
+import in.nandhini.exception.InvalidException;
+import in.nandhini.exception.InvalidEntry;
 import in.nandhini.model.AdminInfo;
 
 public class FindUserAndAdmin {
 
-	private FindUserAndAdmin() {
-		IllegalArgumentExp.illegalArgumentConstructor();
+	private FindUserAndAdmin() throws InvalidEntry {
+		throw new InvalidEntry("Invalid Entry into constructor");
 	}
 
-	public static boolean getAdmin(Long admin, String password) {
+	public static boolean getAdmin(Long admin, String password) throws InvalidException {
 		boolean valid = false;
 		Map<String, Long> administrator = AdminInfo.getAdmin();
 		try{
@@ -24,17 +24,18 @@ public class FindUserAndAdmin {
 		}
 	}catch(NullPointerException e)
 	{
-		NullPointerExp.nullInput();
+		throw new InvalidException("This is not an Admin");
 	}return valid;
 	}
 
 	public static boolean validLogin(long mobNo, String givenPwd) {
 		boolean userValid = false;
-		boolean exists=UserManager.userExists(mobNo);
-		if(exists) {
+		boolean exist=UserManager.userExists(mobNo);
+		if(exist) {
 			String storedPwd=UserManager.getPwd(mobNo);
 			if(storedPwd.equals(givenPwd)) {
 				userValid=true;
+				System.out.println(userValid);
 			}
 		}
 		return userValid;

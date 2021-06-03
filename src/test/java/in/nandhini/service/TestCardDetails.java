@@ -1,6 +1,8 @@
 package in.nandhini.service;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
@@ -15,7 +17,8 @@ public class TestCardDetails {
 	@Test
 	public void cardNumberLengthCheck() {
 		String cardNo = " 8765343312345678 ";
-		boolean output = CardValidation.cardNumberLength(cardNo);
+		boolean output = false;
+		output = CardValidation.cardNumberLength(cardNo);
 		assertTrue(output);
 	}
 
@@ -50,7 +53,8 @@ public class TestCardDetails {
 	@Test
 	public void cardValid() {
 		String yearMonth = "2021-09";
-		boolean output = CardValidation.creditcardValidyear(yearMonth);
+		boolean output = false;
+		output = CardValidation.creditcardValidyear(yearMonth);
 		assertTrue(output);
 	}
 
@@ -71,7 +75,8 @@ public class TestCardDetails {
 	@Test
 	public void validCVV() {
 		String cvv = "345";
-		boolean output = CardValidation.cvvNo(cvv);
+		boolean output = false;
+		output = CardValidation.cvvNo(cvv);
 		assertTrue(output);
 	}
 
@@ -96,28 +101,29 @@ public class TestCardDetails {
 			assertEquals(MessageConstants.CVV, e.getMessage());
 		}
 	}
-	
+
 	@Test
 	public void cardValidCheck() {
 		String cardNo = " 8765343312345678 ";
 		String cvv = "123";
 		String yearMonth = "2021-07";
-		boolean output = OnlinePayment.allCardOrientedValidityCheck(cardNo,yearMonth,cvv);
+		boolean output = false;
+		output = OnlinePayment.allCardOrientedValidityCheck(cardNo, yearMonth, cvv);
 		assertTrue(output);
 	}
-	
+
 	@Test
 	public void invalidCard() {
 		try {
 			String cardNo = " 876534331278 ";
 			String cvv = "122as3";
 			String yearMonth = "2021-03";
-			OnlinePayment.allCardOrientedValidityCheck(cardNo,yearMonth,cvv);
+			OnlinePayment.allCardOrientedValidityCheck(cardNo, yearMonth, cvv);
+			System.out.println();
 			fail();
 		} catch (RuntimeException e) {
 			assertEquals(MessageConstants.INVALID_CARD_NO, e.getMessage());
 		}
-	}
-	
 
+	}
 }

@@ -26,7 +26,6 @@ public class HourCalculator {
 			totalHour = differenceInTime / 3600000;
 			System.out.println("Total Hours spent at Hotel: " + totalHour);
 		} catch (ParseException e) {
-			System.out.println("Invalid Date and Time format");
 			totalHour = 0;
 		}
 		return totalHour;
