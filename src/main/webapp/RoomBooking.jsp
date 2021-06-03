@@ -81,6 +81,24 @@
 					var cin = document.getElementById("cid").value;
 					document.getElementById("cod").setAttribute("min", cin);
 				}
+				
+				function availability(){
+					var op=document.getElementById("suiteType").getElementsByTagName("option")
+					let url = "RoomAvailability";
+					fetch(url).then(res=>res.json()).then(res=>{
+						console.log(res);
+						let data = [];
+						data = res;
+						for(var i=0; i<op;i++){
+							console.log(op[i]);
+							(data[0]>1)?op[i].disabled=true:op[i].disabled=false;
+							(data[1]>1)?op[i].disabled=true:op[i].disabled=false;
+							(data[2]>1)?op[i].disabled=true:op[i].disabled=false;
+						}
+						
+						});
+					}
+				availability();
 			</script>
 		</form>
 		</main>

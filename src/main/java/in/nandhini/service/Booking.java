@@ -1,6 +1,8 @@
 package in.nandhini.service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import in.nandhini.dao.BookingDAO;
@@ -27,5 +29,20 @@ public class Booking {
 			e.printStackTrace();
 		}
 		return book;
+	}
+	
+	public static List<Integer> getAvailability() {
+		List<Integer> avail=null;
+		try {
+			int mv= BookingDAO.getMVRoomAvailability();
+			int ov= BookingDAO.getOVRoomAvailability();
+			int cv=BookingDAO.getCVRoomAvailability();
+			avail = new ArrayList<>(
+					Arrays.asList(mv,ov,cv));
+			System.out.println(avail);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return avail;
 	}
 }
