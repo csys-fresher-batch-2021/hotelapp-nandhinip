@@ -25,7 +25,8 @@ CREATE TABLE bookRoom(
     transport_choice character varying(100) NOT NULL,
     bill_amount_estimation double precision NOT NULL,
 	modified_date TIMESTAMP,
-	status boolean NOT NULL
+	status boolean NOT NULL,
+	CHECK (bill_amount_estimation > 0)
 );
 
 insert into bookRoom(mobile_No,booked_date,check_in,
