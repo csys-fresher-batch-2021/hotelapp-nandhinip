@@ -30,12 +30,6 @@ public class BookingInfo {
 		this.modDate = modDate;
 	}
 
-	@Override
-	public String toString() {
-		return "BookingInfo [mob_No=" + mob_No + ", name=" + name + ", checkIn=" + checkIn + ", bookDate=" + bookDate
-				+ ", suite=" + suite + ", acChoice=" + acChoice + ", poolChoice=" + poolChoice + ", transport="
-				+ transport + ", amount=" + amount + ", status=" + status + ", modDate=" + modDate + "]";
-	}
 
 	public Long mob_No;
 	public String name;

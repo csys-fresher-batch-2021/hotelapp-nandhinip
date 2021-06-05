@@ -1,6 +1,7 @@
 package in.nandhini.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -24,12 +25,19 @@ public class LoginServlet extends HttpServlet {
 		/**
 		 * get data from web page
 		 */
+
+		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
 		// Step 1: Get form values
 		String userPh = request.getParameter("userPh");
 		Long userMobNo = Long.parseLong(userPh);
 		String password = request.getParameter("pwd");
-		
+
+		/**
+		 * check whether user exists or not before login
+		 */
+		boolean exists = UserManager.userExists(userMobNo);
+
 		/**
 		 * check whether it is admin or not and take assigned action
 		 */
@@ -39,21 +47,29 @@ public class LoginServlet extends HttpServlet {
 		} catch (InvalidException e) {
 			e.printStackTrace();
 		}
-		boolean userValid=FindUserAndAdmin.validLogin(userMobNo, password);
+		boolean userValid = FindUserAndAdmin.validLogin(userMobNo, password);
 		System.out.println(userValid);
 		if (adminValid) {
 			session.setAttribute("LOGGED_IN_USER", "admin");
 			response.sendRedirect("AdminView.jsp");
 		} else if (userValid) {
-			String username=UserManager.getName(userMobNo);
+			String username = UserManager.getName(userMobNo);
 			session.setAttribute("LOGGED_IN_USER", username);
-			session.setAttribute("MOB_NO",userMobNo);
+			session.setAttribute("MOB_NO", userMobNo);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
 			dispatcher.forward(request, response);
+		} else if (exists) {
+			out.println("<script type=\"text/javascript\">");
+			out.println("alert('Invalid password');");
+			out.println("location='login.jsp';");
+			out.println("</script>");
 		} else {
-			response.sendRedirect("login.jsp?errorMessage=Invalid login credentials");
+			out.println("<script type=\"text/javascript\">");
+			out.println("alert('User does'nt Exists!! Kindly register');");
+			out.println("location='SignUp.jsp';");
+			out.println("</script>");
 		}
-		
+
 	}
 
 }

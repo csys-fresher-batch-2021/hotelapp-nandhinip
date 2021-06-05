@@ -1,6 +1,8 @@
 package in.nandhini.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -30,7 +32,11 @@ public class SignUp extends HttpServlet {
 		if (valid) {
 			response.sendRedirect("login.jsp");// if valid redirect to login page
 		} else {
-			response.sendRedirect("SignUp.jsp");// if not remain in same page
+			PrintWriter out = response.getWriter();
+			out.println("<script type=\"text/javascript\">");
+			out.println("alert('User Already Exists!');");
+			out.println("location='SignUp.jsp';");
+			out.println("</script>");
 		}
 	}
 

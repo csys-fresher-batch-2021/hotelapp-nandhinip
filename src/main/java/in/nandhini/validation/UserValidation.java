@@ -28,7 +28,7 @@ public class UserValidation {
 			}
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
-			pwdIsValid="Invalid Password";
+			pwdIsValid = "Invalid Password";
 		}
 		return pwdIsValid;
 	}
@@ -50,7 +50,7 @@ public class UserValidation {
 			}
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
-			mobIsValid="Invalid Mobile Number";
+			mobIsValid = "Invalid Mobile Number";
 		}
 
 		return mobIsValid;
@@ -69,7 +69,7 @@ public class UserValidation {
 		}
 		return isValid;
 	}
-	
+
 	/**
 	 * To check whether the user enter the valid name or not
 	 * 
@@ -87,14 +87,17 @@ public class UserValidation {
 	/**
 	 * checking both mobile mobile number and password and then adding user
 	 */
-	public static Boolean checkAndAddUser(long mobileNo, String pwd, String name,String gender) {
+	public static Boolean checkAndAddUser(long mobileNo, String pwd, String name, String gender) {
 		Boolean added = false;
 		String mobOutput = UserValidation.mobileNumberCheck(mobileNo);
+		boolean exists = UserManager.userExists(mobileNo);
 		String pwdOutput = UserValidation.userPasswordCheck(pwd);
 		Boolean nameOutput = UserValidation.nameValidation(name);
-		if (mobOutput.equals("Valid Mobile Number") && pwdOutput.equals("Valid Password") && nameOutput) {
-			UserManager.addUser(mobileNo, pwd, name,gender);
-			added = true;
+		if (!exists) {
+			if (mobOutput.equals("Valid Mobile Number") && pwdOutput.equals("Valid Password") && nameOutput) {
+				UserManager.addUser(mobileNo, pwd, name, gender);
+				added = true;
+			}
 		}
 		return added;
 	}
