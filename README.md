@@ -6,7 +6,7 @@
 * Display user 
 * Does User Exists
 #### User Validation:
-*Logic to check whether password and mobile number is valid or not
+* Logic to check whether password and mobile number is valid or not
 password(8-characters), mobile number(10-Digit Number)
 #### Date and Time Util:   
 * Logic to check whether Check-In date and time is valid or not.
@@ -20,7 +20,7 @@ password(8-characters), mobile number(10-Digit Number)
 * check availability of room
 #### Display facility:
 Display other Facility available in hotel
-* Food/Without food
+* Pool Access
 * AC/NON-AC
 * With Pick-Up & Drop or Not
 #### Facility choice Selector: 
