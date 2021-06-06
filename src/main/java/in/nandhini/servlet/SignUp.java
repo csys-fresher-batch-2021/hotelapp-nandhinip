@@ -31,10 +31,14 @@ public class SignUp extends HttpServlet {
 		Boolean valid = UserValidation.checkAndAddUser(mobileNo, pwd, name, gender);
 		if (valid) {
 			response.sendRedirect("login.jsp");// if valid redirect to login page
-		} else {
-			PrintWriter out = response.getWriter();
+		}else if(exists){
 			out.println("<script type=\"text/javascript\">");
 			out.println("alert('User Already Exists!');");
+			out.println("location='SignUp.jsp';");
+			out.println("</script>");
+		}else {
+			out.println("<script type=\"text/javascript\">");
+			out.println("alert('Use Valid Credentials as per given Instructions!');");
 			out.println("location='SignUp.jsp';");
 			out.println("</script>");
 		}
