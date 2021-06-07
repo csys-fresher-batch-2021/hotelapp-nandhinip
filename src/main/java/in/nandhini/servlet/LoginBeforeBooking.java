@@ -16,17 +16,7 @@ import javax.servlet.http.HttpSession;
 public class LoginBeforeBooking extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public LoginBeforeBooking() {
-		super();
-	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		/**
@@ -34,11 +24,15 @@ public class LoginBeforeBooking extends HttpServlet {
 		 * logged in or not
 		 */
 		HttpSession session = request.getSession();
-		String loggedInUsername = (String) session.getAttribute("LOGGED_IN_USER");
-		if (loggedInUsername != null) {
-			response.sendRedirect("RoomBooking.jsp");
-		} else {
-			response.sendRedirect("login.jsp?errorMessage=Kindly Login Before Booking");
+		try {
+			String loggedInUsername = (String) session.getAttribute("LOGGED_IN_USER");
+			if (loggedInUsername != null) {
+				response.sendRedirect("RoomBooking.jsp");
+			} else {
+				response.sendRedirect("login.jsp?errorMessage=Kindly Login Before Booking");
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 

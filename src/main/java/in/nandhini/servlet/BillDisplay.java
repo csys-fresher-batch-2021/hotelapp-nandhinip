@@ -22,14 +22,7 @@ import in.nandhini.service.Booking;
 public class BillDisplay extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public BillDisplay() {
-		super();
-	}
-
-	@SuppressWarnings("unchecked")
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -57,7 +50,6 @@ public class BillDisplay extends HttpServlet {
 		choice.add(poolOption);
 		choice.add(transport);
 		choice.add(price);
-		System.out.println(choice);
 		try {
 			Booking.bookRoomData(choice);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("cart");

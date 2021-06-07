@@ -50,7 +50,6 @@ public class FindUserAndAdmin {
 			String storedPwd = UserManager.getPwd(mobNo);
 			if (storedPwd.equals(givenPwd)) {
 				userValid = true;
-				System.out.println(userValid);
 			}
 		}
 		return userValid;

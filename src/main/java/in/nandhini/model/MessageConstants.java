@@ -10,7 +10,7 @@ public class MessageConstants {
 	}
 
 	/**
-	 * Message Constants for some Constant String
+	 * Constants for some Constant String
 	 */
 	public static final String MOUNTAINVIEW = "Mountain View";
 	public static final String OCEANVIEW = "Night Ocean View";
@@ -28,4 +28,5 @@ public class MessageConstants {
 	public static final String NULL_VALUE = "Given Null Value";
 	public static final String DATE_FORMAT = "yyyy-mm-dd";
 	public static final String CVV = "Invalid CVV";
+	public static final String AVAILABILITY = "Unable to fetch Room Availability";
 }

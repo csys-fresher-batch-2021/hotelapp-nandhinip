@@ -1,6 +1,7 @@
 package in.nandhini.UtilTest;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -18,15 +19,8 @@ public class TestDateTime {
 			String bdate = "2021-03-04";
 			DateTime.checkInDate(bdate);
 		} catch (Exception e) {
-			assertEquals(MessageConstants.INVALID_DATE,e.getMessage());
+			assertEquals(MessageConstants.INVALID_DATE, e.getMessage());
 		}
-	}
-
-	@Test
-	public void testchekIntoDay() {
-		String bdate = "2021-05-21";
-		boolean Output = DateTime.checkInDate(bdate);
-		assertTrue(Output);
 	}
 
 	@Test
@@ -62,10 +56,10 @@ public class TestDateTime {
 			String endDate = "2021-06-03 06:30";// Given endDate
 			DateTime.checkOutDate(startDate, endDate);
 		} catch (Exception e) {
-			assertEquals(MessageConstants.INVALID_DATE,e.getMessage());
+			assertEquals(MessageConstants.INVALID_DATE, e.getMessage());
 		}
 	}
-	
+
 	@Test
 	public void emptyStringInput() {
 		try {
@@ -73,10 +67,10 @@ public class TestDateTime {
 			String endDate = " ";// Given endDate
 			DateTime.checkOutDate(startDate, endDate);
 		} catch (Exception e) {
-			assertEquals(MessageConstants.INVALID_DATE,e.getMessage());
+			assertEquals(MessageConstants.INVALID_DATE, e.getMessage());
 		}
 	}
-	
+
 	@Test
 	public void nullInput() {
 		try {
@@ -84,10 +78,10 @@ public class TestDateTime {
 			String endDate = null;// Given endDate
 			DateTime.checkOutDate(startDate, endDate);
 		} catch (Exception e) {
-			assertEquals(MessageConstants.INVALID_DATE,e.getMessage());
+			assertEquals(MessageConstants.INVALID_DATE, e.getMessage());
 		}
 	}
-	
+
 	@Test
 	public void wrongformatInput() {
 		try {
@@ -95,7 +89,7 @@ public class TestDateTime {
 			String endDate = " 2021-06-";// Given endDate
 			DateTime.checkOutDate(startDate, endDate);
 		} catch (Exception e) {
-			assertEquals(MessageConstants.INVALID_DATE,e.getMessage());
+			assertEquals(MessageConstants.INVALID_DATE, e.getMessage());
 		}
 	}
 }

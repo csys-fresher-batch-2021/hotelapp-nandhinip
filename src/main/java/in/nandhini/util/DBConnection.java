@@ -7,7 +7,11 @@ import java.sql.SQLException;
 import in.nandhini.exception.InvalidException;
 
 public class DBConnection {
-
+	
+	/**
+	 * Constructor
+	 * @throws InvalidException
+	 */
 	private DBConnection() throws InvalidException {
 		throw new InvalidException("Invalid Entry");
 	}
@@ -26,10 +30,9 @@ public class DBConnection {
 
 			// Step 2: Get the Database Connection (SQLException)
 			connection = DriverManager.getConnection(url, username, password);
-			// System.out.println(connection);
+
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
-			throw new RuntimeException("Unable to get the database connection");
 		}
 
 		return connection;

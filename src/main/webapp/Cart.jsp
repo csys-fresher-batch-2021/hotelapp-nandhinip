@@ -20,6 +20,7 @@ img {
  
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
+	<h3>Your Cart</h3>
 		<%List<CartInfo>cart=(List<CartInfo>)session.getAttribute("CART");
 		 if(cart==null || cart.isEmpty()){
 		%>
@@ -33,13 +34,13 @@ img {
 			<div class="card" style="width: 18rem;">
 			  <div class="card-header">Your Cart </div>
 			  <ul class="list-group list-group-flush">
-			    <li class="list-group-item"><%=yc.checkIn %></li>
-			    <li class="list-group-item"><%=yc.suite %></li>
-			    <li class="list-group-item"><%=yc.acChoice %></li>
-			    <li class="list-group-item"><%=yc.poolChoice %></li>
-			    <li class="list-group-item"><%=yc.transport %></li>
-			    <li class="list-group-item">INR.<%=yc.amount %></li>
-			    <li  class="list-group-item"><a href="CancelOrder?id=<%=yc.id %>">Remove From Cart</a></li>
+			    <li class="list-group-item"><%=yc.getCheckIn() %></li>
+			    <li class="list-group-item"><%=yc.getSuite() %></li>
+			    <li class="list-group-item"><%=yc.getAcChoice() %></li>
+			    <li class="list-group-item"><%=yc.getPoolChoice() %></li>
+			    <li class="list-group-item"><%=yc.getTransport() %></li>
+			    <li class="list-group-item">INR.<%=yc.getAmount() %></li>
+			    <li  class="list-group-item"><a href="CancelOrder?id=<%=yc.getId() %>">Remove From Cart</a></li>
 			  </ul>
 			  </div>
 			</div>

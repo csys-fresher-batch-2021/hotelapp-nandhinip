@@ -10,6 +10,11 @@ import in.nandhini.util.DateTime;
 
 public class Cart {
 
+	/**
+	 * Constructor
+	 * 
+	 * @throws InvalidException
+	 */
 	private Cart() throws InvalidException {
 		throw new InvalidException("Invalid Entry");
 	}

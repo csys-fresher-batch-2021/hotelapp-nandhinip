@@ -8,7 +8,7 @@ import in.nandhini.model.MessageConstants;
 public class DisplayRooms {
 
 	/**
-	 * as constructor concept require at least one non-public constructor
+	 * Constructor concept require at least one non-public constructor
 	 */
 	private DisplayRooms() {
 		throw new IllegalArgumentException();

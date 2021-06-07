@@ -25,8 +25,8 @@ div {
 		<input type=text name="name" id="name" placeholder="Lower Case Name" 
 			onchange="search()" pattern="[a-z]{3,30}" required autofocus>
 			<p id = "GFG_DOWN">  </p>
-		<table id="table" class="table table-bordered">
-			<caption></caption>	
+		<table id="tbl" class="table table-bordered">
+			<caption></caption>
 		</table>
 		<script>
 		function search(){
@@ -65,11 +65,9 @@ div {
 			    	tableData+= '<td>' + data[i].modDate + '</td>';		        
 			    	tableData+= '</tr>';
 			    	tableData+='</tbody>';
-				    document.getElementById("table").innerHTML = tableData;
+				    document.getElementById("tbl").innerHTML = tableData;
 			    }
-				
 		}
-		
 		
 		function searchUser(res,userName){
 				data = res.filter(res => res.name.includes(userName));
@@ -79,7 +77,7 @@ div {
 		</script>
 		
 		<div class="info">
-	 	 <p><strong>! </strong> If there is no data regarding the name,table won't alter.
+	 	 <p><strong>! </strong> If there is no data regarding the name.
 	 	  Refresh it, to get all details</p>
 		</div>
 	</main>

@@ -9,8 +9,13 @@ import in.nandhini.exception.InvalidException;
 
 public class DBClose {
 
+	/**
+	 * Constructor
+	 * 
+	 * @throws InvalidException
+	 */
 	private DBClose() throws InvalidException {
-		throw new InvalidException("Invalid Entry");
+		throw new InvalidException("Constructor");
 	}
 
 	/**

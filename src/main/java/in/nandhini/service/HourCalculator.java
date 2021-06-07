@@ -1,5 +1,6 @@
 package in.nandhini.service;
 
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -28,9 +29,13 @@ public class HourCalculator {
 		try {
 			Date d1 = sdf.parse(startDate);
 			Date d2 = sdf.parse(endDate);
-			long differenceInTime = d2.getTime() - d1.getTime();
-			totalHour = differenceInTime / 3600000;
-			System.out.println("Total Hours spent at Hotel: " + totalHour);
+			double differenceInTime = (d2.getTime() - d1.getTime());
+			double hour = differenceInTime / 3600000;
+			
+			// format to two decimal points
+			DecimalFormat numberFormat = new DecimalFormat("#.00");
+			String total = numberFormat.format(hour);
+			totalHour  = Double.parseDouble(total);
 		} catch (ParseException e) {
 			totalHour = 0;
 		}

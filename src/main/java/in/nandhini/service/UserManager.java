@@ -20,7 +20,7 @@ public class UserManager {
 	 * User's List
 	 */
 	private static List<UserInfo> userDetails = new ArrayList<>();
-	
+
 	public static List<UserInfo> getUserDetails() {
 		return userDetails;
 	}
@@ -34,23 +34,22 @@ public class UserManager {
 	public static String getPwd(long mobNo) {
 		String pwd = null;
 		try {
-			pwd=UserDAOSearchUserDetail.getPwd(mobNo);
+			pwd = UserDAOSearchUserDetail.getPwd(mobNo);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return pwd;
 	}
-	
+
 	public static boolean userExists(long mobNo) {
 		boolean exists = false;
 		try {
 			exists = UserDAOSearchUserDetail.exists(mobNo);
-			System.out.println(exists);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return exists;
-		
+
 	}
 
 	/**
@@ -67,17 +66,17 @@ public class UserManager {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * get Name of the particular user from database
+	 * 
 	 * @param mobNo
 	 * @return
 	 */
 	public static String getName(long mobNo) {
-		String name=null;
+		String name = null;
 		try {
 			name = UserDAOSearchUserDetail.getName(mobNo);
-			System.out.println(name);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

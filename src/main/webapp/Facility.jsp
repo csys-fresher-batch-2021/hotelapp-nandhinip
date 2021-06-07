@@ -16,15 +16,21 @@
 			<div class="card-body">
 				<img class="rounded mx-auto d-block" width="400" height="250"
 					src="AcChoice.jpg" alt="Card image cap">
-				 <%
-					Map<String, Double> acChoice = DisplayFacility.getAcOption();
-					for (String acOption : acChoice.keySet()) {
-						double price = acChoice.get(acOption);
+				<%
+				Map<String, Double> acChoice = DisplayFacility.getAcOption();
+				for (String acOption : acChoice.keySet()) {
+					double price = acChoice.get(acOption);
 				%>
 
 
-				<h6><%=acOption%> : <%=price%> INR per hour</h6>
-				<%}%>
+				<h6><%=acOption%>
+					:
+					<%=price%>
+					INR per hour
+				</h6>
+				<%
+				}
+				%>
 
 				<p class="card-text">Your's choice is ours. We respect your
 					choice</p>
@@ -37,15 +43,19 @@
 			<div class="card-body">
 				<img class="rounded mx-auto d-block" width="400" height="250"
 					src="PoolChoice.jpg" alt="Card image cap">
-					<%
-						Map<String, Double> poolChoice = DisplayFacility.getPoolAccessOption();
-						for (String poolOption : poolChoice.keySet()) {
-							double price = poolChoice.get(poolOption);
-						%>
+				<%
+				Map<String, Double> poolChoice = DisplayFacility.getPoolAccessOption();
+				for (String poolOption : poolChoice.keySet()) {
+					double price = poolChoice.get(poolOption);
+				%>
 
 
-				<h6><%=poolOption%> : <%=price%></h6>
-			<%}%>
+				<h6><%=poolOption%>
+					:
+					<%=price%></h6>
+				<%
+				}
+				%>
 				<p class="card-text">Your's choice is ours. We respect your
 					choice</p>
 			</div>
@@ -57,19 +67,23 @@
 			<div class="card-body">
 				<img class="rounded mx-auto d-block" width="400" height="250"
 					src="TransportChoice.jpg" alt="Card image cap">
-					<%
-						Map<String, Double> transportChoice = DisplayFacility.getTransportOption();
-						for (String transportOption : transportChoice.keySet()) {
-							double price = transportChoice.get(transportOption);
-					%>
-					<h6><%=transportOption%> : <%=price%></h6>
-					<%}%>
+				<%
+				Map<String, Double> transportChoice = DisplayFacility.getTransportOption();
+				for (String transportOption : transportChoice.keySet()) {
+					double price = transportChoice.get(transportOption);
+				%>
+				<h6><%=transportOption%>
+					:
+					<%=price%></h6>
+				<%
+				}
+				%>
 				<p class="card-text">Your's choice is ours. We respect your
 					choice</p>
 			</div>
 		</div>
 		<br />
-		
+
 		<div>
 			<a href="index.jsp" class="btn btn-secondary" role="button">Previous</a>
 		</div>

@@ -5,6 +5,10 @@ import in.nandhini.validation.CardValidation;
 
 public class OnlinePayment {
 
+	/**
+	 * Constructor
+	 * @throws InvalidEntry
+	 */
 	private OnlinePayment() throws InvalidEntry {
 		throw new InvalidEntry("Invalid Entry into constructor");
 	}

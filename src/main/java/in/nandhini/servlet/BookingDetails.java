@@ -22,23 +22,23 @@ import in.nandhini.service.Booking;
 public class BookingDetails extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public BookingDetails() {
-		super();
-	}
-
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		/**
-		 * sending json object to admin view jsp page
+		 * sending json object to admin view JSP page
 		 */
-		List<BookingInfo> detail = Booking.getBookingDetails();
-		PrintWriter out = response.getWriter();
-		Gson gson = new Gson();
-		String object = gson.toJson(detail);
-		System.out.println(object);
-		out.println(object);
-		out.flush();
+		try {
+			List<BookingInfo> detail = Booking.getBookingDetails();
+			PrintWriter out = response.getWriter();
+			Gson gson = new Gson();
+			String object = gson.toJson(detail);
+			out.println(object);
+			out.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

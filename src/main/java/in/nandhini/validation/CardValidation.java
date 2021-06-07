@@ -7,20 +7,23 @@ import in.nandhini.model.MessageConstants;
 
 public class CardValidation {
 
+	private CardValidation() throws InvalidException {
+		throw new InvalidException("Constructor");
+	}
 
 	/**
 	 * to check the card validity
 	 * 
 	 * @param cardex
 	 * @return boolean
-	 * @throws InvalidException 
+	 * @throws InvalidException
 	 */
-	public static boolean creditcardValidyear(String cardex)  {
-		boolean valid=true;
+	public static boolean creditcardValidyear(String cardex) {
+		boolean valid = true;
 		YearMonth cardexpirydate = YearMonth.parse(cardex);
 		YearMonth now = YearMonth.now();
 		if (cardexpirydate.isBefore(now)) {
-			valid =false;
+			valid = false;
 			throw new IllegalArgumentException(MessageConstants.CARD_EXPIRED);
 		}
 		return valid;
@@ -31,30 +34,30 @@ public class CardValidation {
 	 * 
 	 * @param CardNumber
 	 * @return
-	 * @throws InvalidException 
+	 * @throws InvalidException
 	 */
 	public static boolean cardNumberLength(String cardNumber) {
-		boolean valid=true;
+		boolean valid = true;
 		String cardNumberTrim = cardNumber.trim();
-		if (cardNumberTrim.length() != 16){// TO CHECK THE LENGTH OF A STRING
+		if (cardNumberTrim.length() != 16) {// TO CHECK THE LENGTH OF A STRING
 			throw new IllegalArgumentException(MessageConstants.INVALID_CARD_NO);
 		}
 		return valid;
 	}
-	
-	
+
 	/**
 	 * to check whether it is valid cvv or not
+	 * 
 	 * @param cvv
 	 * @return
 	 */
 	public static boolean cvvNo(String cvv) {
-		boolean valid=false;
-		boolean len=cvv.length()==3;
-		boolean regex=cvv.matches("[0-9]+");
-		if( regex && len) {
-			valid=true;
-		}else {
+		boolean valid = false;
+		boolean len = cvv.length() == 3;
+		boolean regex = cvv.matches("[0-9]+");
+		if (regex && len) {
+			valid = true;
+		} else {
 			throw new IllegalArgumentException(MessageConstants.CVV);
 		}
 		return valid;

@@ -13,21 +13,21 @@ public class TestRoomChoice {
 	 * Testing room choice with appropriate choice
 	 */
 	@Test
-	public void roomChoice1() {
+	public void mountainView() {
 		String roomChoice = "Mountain View";
 		double output =  RoomChoiceValidation.roomsPrice(roomChoice);
 		assertEquals(25000.0,output,0.01);
 	}
 
 	@Test
-	public void roomChoice2() {
+	public void oceanView() {
 		String roomChoice = "Night Ocean View";
 		double output = RoomChoiceValidation.roomsPrice(roomChoice);
 		assertEquals(20000.0,output,0.01);
 	}
 
 	@Test
-	public void roomChoice3() {
+	public void cityView() {
 		String roomChoice = "Night City View";
 		double output;
 		output = RoomChoiceValidation.roomsPrice(roomChoice);

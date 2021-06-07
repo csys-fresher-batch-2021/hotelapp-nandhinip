@@ -7,6 +7,7 @@ import in.nandhini.exception.InvalidEntry;
 import in.nandhini.model.MessageConstants;
 
 public class DisplayFacility {
+
 	private DisplayFacility() throws InvalidEntry {
 		throw new InvalidEntry("Invalid Entry into constructor");
 	}

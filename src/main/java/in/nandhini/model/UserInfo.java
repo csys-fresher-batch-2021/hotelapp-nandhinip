@@ -1,13 +1,17 @@
 package in.nandhini.model;
 
+import lombok.Data;
+
+@Data
 public class UserInfo {
+
 	/**
 	 * User Info Details in List
 	 */
-	public Long mobileNo;
-	public String password;
-	public String userName;
-	public String gender;
+	private Long mobileNo;
+	private String password;
+	private String userName;
+	private String gender;
 
 	public UserInfo(long mobNo, String pwd, String name, String gender) {
 		super();
@@ -15,22 +19,6 @@ public class UserInfo {
 		this.password = pwd;
 		this.userName = name;
 		this.gender = gender;
-	}
-
-	public Long getMobileNo() {
-		return mobileNo;
-	}
-
-	public String getName() {
-		return userName;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public String getGender() {
-		return gender;
 	}
 
 	@Override

@@ -34,15 +34,15 @@
 					<td><%=choice%></td>
 					<td><%=price%></td>
 				</tr>
-				</tbody>
+			</tbody>
 				<%
 				}
 				%>
 				<%-- <% LinkedHashMap<String,Double> bill=(LinkedHashMap<String,Double>)request.getAttribute("BILL"); %>
 	            <c:forEach var="choice" items="${bill.keySet()}">
 	            <tr>
-	                <td><c:out value= "${choice}" /></td>
-	                <td><c:out value= "${bill.get(choice)}"/></td>
+	                <td><c:out value= "choice" /></td>
+	                <td><c:out value= "bill.get(choice)"/></td>
 	            </tr>
 	            </c:forEach>
 	            </tbody> --%>

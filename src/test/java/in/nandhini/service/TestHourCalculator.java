@@ -14,7 +14,7 @@ public class TestHourCalculator {
 		String startDate = "2021-06-06T01:10";// Given startDate
 		String endDate = "2021-06-06T06:30";// Given endDate
 		double output = HourCalculator.findingHours(startDate, endDate);
-		assertEquals(5.0,output,0.001);
+		assertEquals(5.33,output,0.001);
 	}
 
 	/**
@@ -25,8 +25,7 @@ public class TestHourCalculator {
 		String startDate = "2021-06-05T01:10";// Given startDate
 		String endDate = "2021-06-06T06:30";// Given endDate
 		double output = HourCalculator.findingHours(startDate, endDate);
-		System.out.println(output);
-		assertEquals(29.0,output,0.001);
+		assertEquals(29.33,output,0.001);
 
 	}
 

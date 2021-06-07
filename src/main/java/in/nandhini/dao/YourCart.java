@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import in.nandhini.exception.DBException;
 import in.nandhini.exception.InvalidEntry;
 import in.nandhini.model.CartInfo;
 import in.nandhini.util.DBClose;
@@ -27,7 +28,7 @@ public class YourCart {
 	 * @return
 	 * @throws Exception
 	 */
-	public static List<CartInfo> getCart(long mobNo) throws Exception {
+	public static List<CartInfo> getCart(long mobNo) throws DBException {
 		List<CartInfo> cart = new ArrayList<>();
 		Connection con = null;
 		PreparedStatement pst = null;
@@ -60,7 +61,7 @@ public class YourCart {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new Exception("Unable to fetch Booking Details");
+			throw new DBException("Unable to fetch Booking Details");
 		} finally {
 			DBClose.close(rs, pst, con);
 		}
@@ -68,13 +69,13 @@ public class YourCart {
 	}
 
 	/**
-	 * Where the user booked or not
+	 * Where the user booked the room or not
 	 * 
 	 * @param mobNo
 	 * @return
 	 * @throws Exception
 	 */
-	public static boolean exists(long mobNo) throws Exception {
+	public static boolean exists(long mobNo) throws DBException {
 
 		Connection con = null;
 		PreparedStatement pst = null;
@@ -96,7 +97,7 @@ public class YourCart {
 			}
 
 		} catch (SQLException e) {
-			throw new Exception("user does'nt booked");
+			throw new DBException("user does'nt booked");
 		} finally {
 			DBClose.close(rs, pst, con);
 		}
@@ -112,7 +113,7 @@ public class YourCart {
 	 * @throws Exception
 	 * @throws SQLException
 	 */
-	public static boolean cancelOrder(int id, LocalDateTime modDate) throws Exception, SQLException {
+	public static boolean cancelOrder(int id, LocalDateTime modDate) throws DBException {
 		// Step 1: Get connection
 		boolean cancelled = false;
 		Connection con = null;
@@ -132,7 +133,7 @@ public class YourCart {
 			System.out.println("cancelled");
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new RuntimeException("Unable to add user");
+			throw new DBException("Unable to add user");
 		} finally {
 
 			DBClose.close(pst, con);

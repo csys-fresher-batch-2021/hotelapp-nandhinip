@@ -20,10 +20,7 @@ import in.nandhini.service.Cart;
 public class cart extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public cart() {
-		super();
-	}
-
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
@@ -31,10 +28,14 @@ public class cart extends HttpServlet {
 		/**
 		 * get particular user cart info and display it in their cart with json object
 		 */
-		Long mobNo = (Long) session.getAttribute("MOB_NO");
-		List<CartInfo> yourCart = Cart.cartDetails(mobNo);
-		session.setAttribute("CART", yourCart);
-		response.sendRedirect("Cart.jsp");
+		try {
+			Long mobNo = (Long) session.getAttribute("MOB_NO");
+			List<CartInfo> yourCart = Cart.cartDetails(mobNo);
+			session.setAttribute("CART", yourCart);
+			response.sendRedirect("Cart.jsp");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 	}
 }

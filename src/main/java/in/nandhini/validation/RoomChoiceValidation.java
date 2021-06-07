@@ -26,9 +26,9 @@ public class RoomChoiceValidation {
 			try {
 				roomAmount = DisplayRooms.getRoomAvailable().get(roomChoice);
 			} catch (Exception e) {
-				new InvalidException(MessageConstants.INVALIDCHOICE);
+				e.printStackTrace();
 			} finally {
-				
+
 			}
 		}
 		return roomAmount;

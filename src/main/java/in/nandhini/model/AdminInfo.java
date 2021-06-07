@@ -12,7 +12,7 @@ public class AdminInfo {
 	}
 
 	/**
-	 * Administrator
+	 * Static details of Administrator
 	 */
 	private static Map<String, Long> admin = new HashMap<>();
 
