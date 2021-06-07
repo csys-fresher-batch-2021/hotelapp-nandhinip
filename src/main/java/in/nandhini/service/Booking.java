@@ -9,9 +9,10 @@ import in.nandhini.dao.BookingDAO;
 import in.nandhini.exception.InvalidException;
 import in.nandhini.model.BookingInfo;
 import in.nandhini.util.DateTime;
-
+import lombok.extern.slf4j.Slf4j;
+@Slf4j
 public class Booking {
-
+	
 	private Booking() throws InvalidException {
 		throw new InvalidException("Invalid Entry");
 	}
@@ -39,7 +40,7 @@ public class Booking {
 		List<BookingInfo> book = null;
 		try {
 			book = BookingDAO.getAllBookingDetails();
-			System.out.println(book);
+			log.info("List Fetched");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

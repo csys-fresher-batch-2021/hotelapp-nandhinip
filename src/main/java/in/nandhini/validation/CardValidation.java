@@ -6,6 +6,10 @@ import in.nandhini.exception.InvalidException;
 import in.nandhini.model.MessageConstants;
 
 public class CardValidation {
+	
+	private CardValidation() throws InvalidException {
+		throw new InvalidException("Constructor");
+	}
 
 
 	/**

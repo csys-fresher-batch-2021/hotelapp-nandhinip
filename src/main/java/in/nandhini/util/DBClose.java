@@ -10,7 +10,7 @@ import in.nandhini.exception.InvalidException;
 public class DBClose {
 
 	private DBClose() throws InvalidException {
-		throw new InvalidException("Invalid Entry");
+		throw new InvalidException("Constructor");
 	}
 
 	/**

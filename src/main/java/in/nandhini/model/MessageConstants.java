@@ -28,4 +28,5 @@ public class MessageConstants {
 	public static final String NULL_VALUE = "Given Null Value";
 	public static final String DATE_FORMAT = "yyyy-mm-dd";
 	public static final String CVV = "Invalid CVV";
+	public static final String AVAILABILITY = "Unable to fetch Room Availability";
 }

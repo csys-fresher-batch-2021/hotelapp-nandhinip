@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import in.nandhini.service.UserManager;
 import in.nandhini.validation.UserValidation;
 
 /**
@@ -19,24 +20,41 @@ public class SignUp extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
+		PrintWriter out = response.getWriter();
 		// getting user name, mobile number and password
 		String name = request.getParameter("name");
-		long mobileNo = Long.parseLong(request.getParameter("userMobile"));
+		long mobileNo = 0;
+		try {
+			mobileNo = Long.parseLong(request.getParameter("userMobile"));
+		} catch (NumberFormatException e1) {
+			e1.printStackTrace();
+		}
 		String pwd = request.getParameter("pwd");
 		String gender = request.getParameter("gender");
-		System.out.println(mobileNo);
+		
+		/**
+		 * check whether user exists or not before login
+		 */
+		boolean exists = UserManager.userExists(mobileNo);
 
 		// checking the details are valid or not
-		Boolean valid = UserValidation.checkAndAddUser(mobileNo, pwd, name, gender);
-		if (valid) {
-			response.sendRedirect("login.jsp");// if valid redirect to login page
-		} else {
-			PrintWriter out = response.getWriter();
-			out.println("<script type=\"text/javascript\">");
-			out.println("alert('User Already Exists!');");
-			out.println("location='SignUp.jsp';");
-			out.println("</script>");
+		try {
+			Boolean valid= UserValidation.checkAndAddUser(mobileNo, pwd, name, gender);
+			if (valid) {
+				response.sendRedirect("login.jsp");// if valid redirect to login page
+			} else if(exists){
+				out.println("<script type=\"text/javascript\">");
+				out.println("alert('User Already Exists!');");
+				out.println("location='SignUp.jsp';");
+				out.println("</script>");
+			}else {
+				out.println("<script type=\"text/javascript\">");
+				out.println("alert('Use Valid Credentials as per given instructions!');");
+				out.println("location='SignUp.jsp';");
+				out.println("</script>");
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 

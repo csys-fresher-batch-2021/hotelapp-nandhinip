@@ -2,18 +2,20 @@ package in.nandhini.model;
 
 import java.time.LocalDateTime;
 
+import lombok.Data;
+@Data
 public class CartInfo {
 
 	/**
 	 * Cart data to be stored in List
 	 */
-	public Integer id;
-	public LocalDateTime checkIn;
-	public String suite;
-	public String acChoice;
-	public String poolChoice;
-	public String transport;
-	public Double amount;
+	private Integer id;
+	private LocalDateTime checkIn;
+	private String suite;
+	private String acChoice;
+	private String poolChoice;
+	private String transport;
+	private Double amount;
 
 	public CartInfo(int id, LocalDateTime checkIn, String acChoice, String suiteType, String tansportChoice,
 			String poolChoice, Double amount) {

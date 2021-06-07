@@ -14,15 +14,23 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/LogoutServlet")
 public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	
+	/**
+	 * to logout session
+	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		/**
 		 * delete all the session data
 		 */
-		session.removeAttribute("LOGGED_IN_USER");
-		response.sendRedirect("index.jsp");
+		try {
+			session.removeAttribute("LOGGED_IN_USER");
+			response.sendRedirect("index.jsp");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

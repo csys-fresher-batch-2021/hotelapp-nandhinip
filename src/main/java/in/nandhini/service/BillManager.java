@@ -3,19 +3,25 @@ package in.nandhini.service;
 import java.text.DecimalFormat;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
+import in.nandhini.exception.InvalidException;
 import in.nandhini.util.DateTime;
 import in.nandhini.validation.FacilityValidation;
 import in.nandhini.validation.RoomChoiceValidation;
 
 public class BillManager {
+	
+	private BillManager() throws InvalidException {
+		throw new InvalidException("Constructor");
+	}
 
 	/*
 	 * calling the appropriate manager to calculate the total bill amount with user
 	 * choice of input from test case.
 	 */
 
-	public static LinkedHashMap<String, Double> totalBill(List<String> list) {
+	public static Map<String, Double> totalBill(List<String> list) {
 
 		// checking Check-In date is valid or not
 		String startDate = null;
@@ -59,7 +65,6 @@ public class BillManager {
 		DecimalFormat numberFormat = new DecimalFormat("#.00");
 		String total = numberFormat.format(billAmount);
 		double totalBill = Double.parseDouble(total);
-		System.out.println(totalBill);
 
 		// create map to store all price details
 		LinkedHashMap<String, Double> bill = new LinkedHashMap<>();

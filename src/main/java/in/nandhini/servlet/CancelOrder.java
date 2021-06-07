@@ -22,6 +22,7 @@ public class CancelOrder extends HttpServlet {
 		super();
 	}
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -29,12 +30,16 @@ public class CancelOrder extends HttpServlet {
 		 * getting the id number from service layer and updating the particular booking
 		 * details as false
 		 */
-		String idStr = request.getParameter("id");
-		Integer id = Integer.parseInt(idStr);
-		boolean cancelled = Cart.cancelOrder(id);
-		request.setAttribute("CANCELLED", cancelled);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("cart");
-		dispatcher.forward(request, response);
+		try {
+			String idStr = request.getParameter("id");
+			Integer id = Integer.parseInt(idStr);
+			boolean cancelled = Cart.cancelOrder(id);
+			request.setAttribute("CANCELLED", cancelled);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("cart");
+			dispatcher.forward(request, response);
+		} catch (NumberFormatException | ServletException | IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import in.nandhini.exception.DBException;
 import in.nandhini.exception.InvalidEntry;
 import in.nandhini.util.DBClose;
 import in.nandhini.util.DBConnection;
@@ -22,7 +23,7 @@ public class UserDAOSearchUserDetail {
 	 * @return
 	 * @throws Exception
 	 */
-	public static String getName(long mobNo) throws Exception {
+	public static String getName(long mobNo) throws DBException {
 
 		Connection con = null;
 		PreparedStatement pst = null;
@@ -44,7 +45,7 @@ public class UserDAOSearchUserDetail {
 			}
 
 		} catch (SQLException e) {
-			throw new Exception("Unable to fetch user Name");
+			throw new DBException("Unable to fetch user Name");
 		} finally {
 			DBClose.close(rs, pst, con);
 		}
@@ -58,7 +59,7 @@ public class UserDAOSearchUserDetail {
 	 * @return
 	 * @throws Exception
 	 */
-	public static String getPwd(long mobNo) throws Exception {
+	public static String getPwd(long mobNo) throws DBException {
 
 		Connection con = null;
 		PreparedStatement pst = null;
@@ -80,7 +81,7 @@ public class UserDAOSearchUserDetail {
 			}
 
 		} catch (SQLException e) {
-			throw new Exception("Unable to fetch user Password");
+			throw new DBException("Unable to fetch user Password");
 		} finally {
 			DBClose.close(rs, pst, con);
 		}
@@ -94,7 +95,7 @@ public class UserDAOSearchUserDetail {
 	 * @return
 	 * @throws Exception
 	 */
-	public static boolean exists(long mobNo) throws Exception {
+	public static boolean exists(long mobNo) throws DBException {
 
 		Connection con = null;
 		PreparedStatement pst = null;
@@ -116,7 +117,7 @@ public class UserDAOSearchUserDetail {
 			}
 
 		} catch (SQLException e) {
-			throw new Exception("user does'nt exists");
+			throw new DBException("user does'nt exists");
 		} finally {
 			DBClose.close(rs, pst, con);
 		}

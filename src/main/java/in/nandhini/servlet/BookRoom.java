@@ -33,6 +33,7 @@ public class BookRoom extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -56,7 +57,7 @@ public class BookRoom extends HttpServlet {
 				Arrays.asList(checkInDate, checkOutDate, suiteType, acOption, poolOption, transport));
 
 		// bill manager returns choices along with its price
-		LinkedHashMap<String, Double> priceList = BillManager.totalBill(list);
+		LinkedHashMap<String, Double> priceList = (LinkedHashMap<String, Double>) BillManager.totalBill(list);
 		try {
 			session.setAttribute("BILL", priceList);
 			request.getRequestDispatcher("/BillDisplay.jsp").forward(request, response);

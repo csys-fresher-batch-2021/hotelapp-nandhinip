@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import in.nandhini.exception.InvalidException;
 import in.nandhini.service.OnlinePayment;
 
 /**
@@ -24,6 +23,7 @@ public class Payment extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+    @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String cardType=request.getParameter("card");
 		String cardNo=request.getParameter("cardNum");
@@ -33,11 +33,11 @@ public class Payment extends HttpServlet {
 		boolean valid = false;
 		try {
 			valid = OnlinePayment.allCardOrientedValidityCheck(cardNo, validYr, cvvNo);
-		} catch (InvalidException e) {
+			if (valid) {
+				response.sendRedirect("login.jsp");
+			}
+		} catch (IOException e) {
 			e.printStackTrace();
-		}
-		if (valid) {
-			response.sendRedirect("login.jsp");
 		}
 	}
 

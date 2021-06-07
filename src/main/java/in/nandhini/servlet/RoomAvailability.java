@@ -25,19 +25,23 @@ public class RoomAvailability extends HttpServlet {
 		super();
 	}
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		/**
 		 * get availability of room from service layer to jsp as json object
 		 */
-		List<Integer> avail = Booking.getAvailability();
-		PrintWriter out = response.getWriter();
-		Gson gson = new Gson();
-		String object = gson.toJson(avail);
-		System.out.println(object);
-		out.println(object);
-		out.flush();
+		try {
+			List<Integer> avail = Booking.getAvailability();
+			PrintWriter out = response.getWriter();
+			Gson gson = new Gson();
+			String object = gson.toJson(avail);
+			out.println(object);
+			out.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

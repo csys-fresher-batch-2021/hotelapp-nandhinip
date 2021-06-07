@@ -27,6 +27,7 @@ public class LoginBeforeBooking extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		/**
@@ -34,11 +35,15 @@ public class LoginBeforeBooking extends HttpServlet {
 		 * logged in or not
 		 */
 		HttpSession session = request.getSession();
-		String loggedInUsername = (String) session.getAttribute("LOGGED_IN_USER");
-		if (loggedInUsername != null) {
-			response.sendRedirect("RoomBooking.jsp");
-		} else {
-			response.sendRedirect("login.jsp?errorMessage=Kindly Login Before Booking");
+		try {
+			String loggedInUsername = (String) session.getAttribute("LOGGED_IN_USER");
+			if (loggedInUsername != null) {
+				response.sendRedirect("RoomBooking.jsp");
+			} else {
+				response.sendRedirect("login.jsp?errorMessage=Kindly Login Before Booking");
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 

@@ -9,11 +9,18 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import in.nandhini.exception.DBException;
+import in.nandhini.exception.InvalidException;
 import in.nandhini.model.BookingInfo;
+import in.nandhini.model.MessageConstants;
 import in.nandhini.util.DBClose;
 import in.nandhini.util.DBConnection;
 
 public class BookingDAO {
+	
+	private BookingDAO() throws InvalidException {
+		throw new InvalidException("Constructor");
+	}
 
 	/**
 	 * insert user booking details in DAO
@@ -23,7 +30,7 @@ public class BookingDAO {
 	 * @throws Exception
 	 * @throws SQLException
 	 */
-	public static void save(List<Object> choice, LocalDateTime bookDate) throws Exception, SQLException {
+	public static void save(List<Object> choice, LocalDateTime bookDate) throws DBException {
 		// Step 1: Get connection
 		Connection con = null;
 		PreparedStatement pst = null;
@@ -47,14 +54,13 @@ public class BookingDAO {
 			pst.setString(7, (String) choice.get(5));
 			pst.setDouble(8, (Double) choice.get(6));
 			pst.setBoolean(9, true);
-			System.out.println(choice);
+
 			// Step 3: Execute Query ( insert/update/delete - call executeUpdate() )
 			pst.executeUpdate();
-			System.out.println("Inserted");
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new RuntimeException("Unable to add user");
+			throw new DBException("Unable to add user");
 		} finally {
 
 			DBClose.close(pst, con);
@@ -67,8 +73,8 @@ public class BookingDAO {
 	 * @return
 	 * @throws Exception
 	 */
-	public static List<BookingInfo> getAllBookingDetails() throws Exception {
-		List<BookingInfo> bookingDetails = new ArrayList<BookingInfo>();
+	public static List<BookingInfo> getAllBookingDetails() throws DBException {
+		List<BookingInfo> bookingDetails = new ArrayList<>();
 		Connection con = null;
 		PreparedStatement pst = null;
 		ResultSet rs = null;
@@ -99,14 +105,25 @@ public class BookingDAO {
 				boolean status = rs.getBoolean("status");
 				Timestamp modDate = rs.getTimestamp("modified_date");
 
-				BookingInfo bookDetail = new BookingInfo(mobNo, name, bookDate, checkin, suiteType, acChoice,
-						poolChoice, tansport, amount, status, modDate);
+				BookingInfo bookDetail = new BookingInfo();
+				bookDetail.setMobNo(mobNo);
+				bookDetail.setName(name);
+				bookDetail.setBookDate(bookDate);
+				bookDetail.setCheckIn(checkin);
+				bookDetail.setSuite(suiteType);
+				bookDetail.setAcChoice(acChoice);
+				bookDetail.setPoolChoice(poolChoice);
+				bookDetail.setTransport(tansport);
+				bookDetail.setAmount(amount);
+				bookDetail.setStatus(status);
+				bookDetail.setModDate(modDate);
+				
 				bookingDetails.add(bookDetail);
 			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new Exception("Unable to fetch Booking Details");
+			throw new DBException("Unable to fetch Booking Details");
 		} finally {
 			DBClose.close(rs, pst, con);
 		}
@@ -119,7 +136,7 @@ public class BookingDAO {
 	 * @return
 	 * @throws Exception
 	 */
-	public static int getMVRoomAvailability() throws Exception {
+	public static int getMVRoomAvailability() throws DBException {
 
 		Connection con = null;
 		PreparedStatement pst = null;
@@ -131,7 +148,7 @@ public class BookingDAO {
 			con = DBConnection.getConnection();
 
 			// Step 2: Query
-			String sql = "SELECT COUNT(*) as Count from bookRoom WHERE check_in >= now()"
+			String sql = "SELECT COUNT(*) as availability from bookRoom WHERE check_in >= now()"
 					+ "and status=true AND suite_Type='Mountain View'";
 			pst = con.prepareStatement(sql);
 
@@ -140,12 +157,12 @@ public class BookingDAO {
 
 			if (rs.next()) {
 
-				mv = rs.getInt("Count");
+				mv = rs.getInt("availability");
 			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new Exception("Unable to fetch user MV Room Availability");
+			throw new DBException(MessageConstants.AVAILABILITY);
 		} finally {
 			DBClose.close(pst, con);
 		}
@@ -158,7 +175,7 @@ public class BookingDAO {
 	 * @return
 	 * @throws Exception
 	 */
-	public static int getOVRoomAvailability() throws Exception {
+	public static int getOVRoomAvailability() throws DBException {
 
 		Connection con = null;
 		PreparedStatement pst = null;
@@ -184,7 +201,7 @@ public class BookingDAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new Exception("Unable to fetch user MV Room Availability");
+			throw new DBException(MessageConstants.AVAILABILITY);
 		} finally {
 			DBClose.close(pst, con);
 		}
@@ -197,7 +214,7 @@ public class BookingDAO {
 	 * @return
 	 * @throws Exception
 	 */
-	public static int getCVRoomAvailability() throws Exception {
+	public static int getCVRoomAvailability() throws DBException {
 
 		Connection con = null;
 		PreparedStatement pst = null;
@@ -223,7 +240,7 @@ public class BookingDAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new Exception("Unable to fetch user MV Room Availability");
+			throw new DBException(MessageConstants.AVAILABILITY);
 		} finally {
 			DBClose.close(pst, con);
 		}

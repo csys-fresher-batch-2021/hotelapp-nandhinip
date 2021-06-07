@@ -10,6 +10,10 @@ import in.nandhini.exception.InvalidException;
 
 public class DateTime {
 	
+	private DateTime() throws InvalidException {
+		throw new InvalidException("Constructor");
+	}
+	
 	/**
 	 * Checking checking date is valid or not
 	 * 
@@ -24,7 +28,6 @@ public class DateTime {
 			String inDate=datestr.substring(0,10);
 			LocalDate today=LocalDate.now();
 			LocalDate in = LocalDate.parse(inDate);
-			System.out.println(in);
 			if (in.isAfter(today)|| in.equals(today)) { // TO CHECK THE DATE IS VALID OR NOT
 				result =true;
 			}
