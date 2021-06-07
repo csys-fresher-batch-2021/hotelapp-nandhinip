@@ -13,6 +13,11 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class Booking {
 	
+	/**
+	 * Constructor
+	 * 
+	 * @throws InvalidException
+	 */
 	private Booking() throws InvalidException {
 		throw new InvalidException("Invalid Entry");
 	}

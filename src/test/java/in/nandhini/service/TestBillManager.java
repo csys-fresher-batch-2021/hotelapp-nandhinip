@@ -26,7 +26,7 @@ public class TestBillManager {
 		String pickUpDropChoice = MessageConstants.NOTRANSPORT;
 		ArrayList<String> list = new ArrayList<>
 		(Arrays.asList(startDate, endDate, roomChoice, acChoice,poolChoice,pickUpDropChoice));
-	    LinkedHashMap<String, Double> priceList = BillManager.totalBill(list);
+	    LinkedHashMap<String, Double> priceList = (LinkedHashMap<String, Double>) BillManager.totalBill(list);
 	    double totalAmount = 0;
 	    for(String price :priceList.keySet()) {
 	    	totalAmount=priceList.get(price);
@@ -47,7 +47,7 @@ public class TestBillManager {
 		String pickUpDropChoice =  MessageConstants.TRANSPORT;
 		List<String> list = new ArrayList<>
 		(Arrays.asList(startDate, endDate, roomChoice, acChoice,poolChoice,pickUpDropChoice));
-	    LinkedHashMap<String,Double> priceList = BillManager.totalBill(list);
+	    LinkedHashMap<String,Double> priceList = (LinkedHashMap<String, Double>) BillManager.totalBill(list);
 	    double totalAmount =0;
 	    for(String price :priceList.keySet()) {
 	    	totalAmount=priceList.get(price);

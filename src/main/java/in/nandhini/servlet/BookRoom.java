@@ -23,15 +23,8 @@ public class BookRoom extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public BookRoom() {
-		super();
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
+	 * read data from JSP and send it to service layer bill Manger and calculate
+	 * estimationF
 	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

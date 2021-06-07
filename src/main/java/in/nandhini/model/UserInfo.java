@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class UserInfo {
+
 	/**
 	 * User Info Details in List
 	 */

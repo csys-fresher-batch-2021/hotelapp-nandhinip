@@ -10,7 +10,7 @@ public class MessageConstants {
 	}
 
 	/**
-	 * Message Constants for some Constant String
+	 * Constants for some Constant String
 	 */
 	public static final String MOUNTAINVIEW = "Mountain View";
 	public static final String OCEANVIEW = "Night Ocean View";

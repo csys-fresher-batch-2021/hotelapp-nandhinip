@@ -28,7 +28,7 @@ public class RoomChoiceValidation {
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {
-				
+
 			}
 		}
 		return roomAmount;

@@ -5,18 +5,19 @@ import in.nandhini.service.DisplayFacility;
 import in.nandhini.model.MessageConstants;
 
 public class FacilityValidation {
-	
+
 	private FacilityValidation() throws InvalidException {
 		throw new InvalidException("Invalid Entry");
 	}
+
 	/**
 	 * to check AC selection is valid or not
 	 * 
 	 * @param acChoice
 	 * @return acCharges
-	 * @throws InvalidException 
+	 * @throws InvalidException
 	 */
-	public static double acNonAcSelection(String acChoice)  {
+	public static double acNonAcSelection(String acChoice) {
 		double acCharges = 0;
 		if (acChoice.equalsIgnoreCase(MessageConstants.WITHAC)
 				|| acChoice.equalsIgnoreCase(MessageConstants.WITHOUTAC)) {
@@ -32,7 +33,7 @@ public class FacilityValidation {
 	 * 
 	 * @param poolChoice
 	 * @return poolCharges
-	 * @throws InvalidException 
+	 * @throws InvalidException
 	 */
 	public static double poolAccess(String poolChoice) {
 		double poolCharges = 0;
@@ -50,7 +51,7 @@ public class FacilityValidation {
 	 * 
 	 * @param pickUpDropChoice
 	 * @return pickUpDropCharges
-	 * @throws InvalidException 
+	 * @throws InvalidException
 	 */
 	public static double transportSelection(String pickUpDropChoice) {
 		double pickUpDropCharges = 0;

@@ -17,7 +17,7 @@ import in.nandhini.util.DBClose;
 import in.nandhini.util.DBConnection;
 
 public class BookingDAO {
-	
+
 	private BookingDAO() throws InvalidException {
 		throw new InvalidException("Constructor");
 	}
@@ -117,7 +117,7 @@ public class BookingDAO {
 				bookDetail.setAmount(amount);
 				bookDetail.setStatus(status);
 				bookDetail.setModDate(modDate);
-				
+
 				bookingDetails.add(bookDetail);
 			}
 

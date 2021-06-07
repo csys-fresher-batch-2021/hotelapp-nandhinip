@@ -12,6 +12,11 @@ import in.nandhini.util.DBConnection;
 
 public class UserDAOSearchUserDetail {
 
+	/**
+	 * constructor
+	 * 
+	 * @throws InvalidEntry
+	 */
 	private UserDAOSearchUserDetail() throws InvalidEntry {
 		throw new InvalidEntry("Invalid Entry");
 	}

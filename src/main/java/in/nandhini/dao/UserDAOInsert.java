@@ -12,7 +12,7 @@ import in.nandhini.util.DBClose;
 import in.nandhini.util.DBConnection;
 
 public class UserDAOInsert {
-	
+
 	private UserDAOInsert() throws InvalidEntry {
 		throw new InvalidEntry("Invalid Entry");
 	}

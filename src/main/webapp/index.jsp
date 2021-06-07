@@ -11,8 +11,8 @@
 		<h3>About</h3>
 		<p>Built in 1901 and substantially remodeled to meet BEST WESTERN standards , 
 		the Bliss Hotel in Pert Land, captures the ambiance of the whaling days and 
-		the plantation era, with architecture that evokes the tranquil lifestyle of turn
-		 of the century while offering all the comforts and convenience of a modern hotel.
+		the plantation era, with architecture that evokes the tranquil lifestyle of
+		 the century while offering all the comforts and convenience of a modern hotel.
 		</p>
 
 		<div class="row">

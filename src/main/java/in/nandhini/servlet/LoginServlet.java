@@ -26,22 +26,22 @@ public class LoginServlet extends HttpServlet {
 		 * get data from web page
 		 */
 		try {
-		PrintWriter out = response.getWriter();
-		HttpSession session = request.getSession();
-		// Step 1: Get form values
-		String userPh = request.getParameter("userPh");
-		Long userMobNo = Long.parseLong(userPh);
-		String password = request.getParameter("pwd");
+			PrintWriter out = response.getWriter();
+			HttpSession session = request.getSession();
+			// Step 1: Get form values
+			String userPh = request.getParameter("userPh");
+			Long userMobNo = Long.parseLong(userPh);
+			String password = request.getParameter("pwd");
 
-		/**
-		 * check whether user exists or not before login
-		 */
-		boolean exists = UserManager.userExists(userMobNo);
+			/**
+			 * check whether user exists or not before login
+			 */
+			boolean exists = UserManager.userExists(userMobNo);
 
-		/**
-		 * check whether it is admin or not and take assigned action
-		 */
-		
+			/**
+			 * check whether it is admin or not and take assigned action
+			 */
+
 			boolean adminValid = FindUserAndAdmin.getAdmin(userMobNo, password);
 			boolean userValid = FindUserAndAdmin.validLogin(userMobNo, password);
 

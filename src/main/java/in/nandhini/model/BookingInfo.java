@@ -17,6 +17,9 @@ public class BookingInfo {
 		super();
 	}
 
+	/**
+	 * used lombok for toString, getter and setter
+	 */
 	private Long mobNo;
 	private String name;
 	private Timestamp checkIn;

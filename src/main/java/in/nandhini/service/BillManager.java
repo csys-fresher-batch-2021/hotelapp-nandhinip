@@ -11,7 +11,12 @@ import in.nandhini.validation.FacilityValidation;
 import in.nandhini.validation.RoomChoiceValidation;
 
 public class BillManager {
-	
+
+	/**
+	 * Constructor
+	 * 
+	 * @throws InvalidException
+	 */
 	private BillManager() throws InvalidException {
 		throw new InvalidException("Constructor");
 	}

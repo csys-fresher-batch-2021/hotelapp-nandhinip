@@ -5,7 +5,7 @@ import in.nandhini.service.UserManager;
 public class UserValidation {
 
 	/**
-	 * as constructor concept require at least one non-public constructor
+	 * Constructor concept require at least one non-public constructor
 	 */
 	private UserValidation() {
 		throw new IllegalStateException();

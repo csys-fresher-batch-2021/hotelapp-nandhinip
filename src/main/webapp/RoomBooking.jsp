@@ -20,7 +20,7 @@ div {
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
 		<form id="orderForm" action="BookRoom" method="post">
-
+			<h6>Room Booking</h6>
 			<table class="table table-borderless">
 			<caption></caption>
 			<tbody>

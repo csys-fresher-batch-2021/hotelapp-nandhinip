@@ -69,7 +69,7 @@ public class YourCart {
 	}
 
 	/**
-	 * Where the user booked or not
+	 * Where the user booked the room or not
 	 * 
 	 * @param mobNo
 	 * @return

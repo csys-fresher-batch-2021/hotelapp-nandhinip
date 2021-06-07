@@ -9,6 +9,7 @@
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
 		<form  onsubmit="getPwd()">
+		<h3>Get Password</h3>
 			<table class="table table-borderless">
 				<caption></caption>
 				<tbody>

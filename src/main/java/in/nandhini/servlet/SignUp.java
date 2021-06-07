@@ -31,7 +31,7 @@ public class SignUp extends HttpServlet {
 		}
 		String pwd = request.getParameter("pwd");
 		String gender = request.getParameter("gender");
-		
+
 		/**
 		 * check whether user exists or not before login
 		 */
@@ -39,15 +39,15 @@ public class SignUp extends HttpServlet {
 
 		// checking the details are valid or not
 		try {
-			Boolean valid= UserValidation.checkAndAddUser(mobileNo, pwd, name, gender);
+			Boolean valid = UserValidation.checkAndAddUser(mobileNo, pwd, name, gender);
 			if (valid) {
 				response.sendRedirect("login.jsp");// if valid redirect to login page
-			} else if(exists){
+			} else if (exists) {
 				out.println("<script type=\"text/javascript\">");
 				out.println("alert('User Already Exists!');");
 				out.println("location='SignUp.jsp';");
 				out.println("</script>");
-			}else {
+			} else {
 				out.println("<script type=\"text/javascript\">");
 				out.println("alert('Use Valid Credentials as per given instructions!');");
 				out.println("location='SignUp.jsp';");

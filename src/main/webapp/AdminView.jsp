@@ -67,9 +67,7 @@ div {
 			    	tableData+='</tbody>';
 				    document.getElementById("tbl").innerHTML = tableData;
 			    }
-				
 		}
-		
 		
 		function searchUser(res,userName){
 				data = res.filter(res => res.name.includes(userName));

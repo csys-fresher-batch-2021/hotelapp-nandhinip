@@ -16,20 +16,15 @@ import in.nandhini.service.OnlinePayment;
 @WebServlet("/Payment")
 public class Payment extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    public Payment() {
-        super();
-    }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-    @Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String cardType=request.getParameter("card");
-		String cardNo=request.getParameter("cardNum");
-		String validYr=request.getParameter("mon");
-		String cvvNo=request.getParameter("cvv");
-		
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String cardType = request.getParameter("card");
+		String cardNo = request.getParameter("cardNum");
+		String validYr = request.getParameter("mon");
+		String cvvNo = request.getParameter("cvv");
+
 		boolean valid = false;
 		try {
 			valid = OnlinePayment.allCardOrientedValidityCheck(cardNo, validYr, cvvNo);

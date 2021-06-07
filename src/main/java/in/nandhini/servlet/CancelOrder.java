@@ -18,10 +18,6 @@ import in.nandhini.service.Cart;
 public class CancelOrder extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public CancelOrder() {
-		super();
-	}
-
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

@@ -22,12 +22,6 @@ import in.nandhini.service.Booking;
 public class BillDisplay extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public BillDisplay() {
-		super();
-	}
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

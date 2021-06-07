@@ -7,7 +7,11 @@ import java.sql.SQLException;
 import in.nandhini.exception.InvalidException;
 
 public class DBConnection {
-
+	
+	/**
+	 * Constructor
+	 * @throws InvalidException
+	 */
 	private DBConnection() throws InvalidException {
 		throw new InvalidException("Invalid Entry");
 	}
