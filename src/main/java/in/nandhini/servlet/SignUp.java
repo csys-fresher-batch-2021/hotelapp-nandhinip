@@ -57,5 +57,4 @@ public class SignUp extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
-
 }
