@@ -2,6 +2,7 @@ package in.nandhini.servlet;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,9 +19,8 @@ public class Payment extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String cardType = request.getParameter("card");
 		String cardNo = request.getParameter("cardNum");
 		String validYr = request.getParameter("mon");
 		String cvvNo = request.getParameter("cvv");
@@ -29,7 +29,8 @@ public class Payment extends HttpServlet {
 		try {
 			valid = OnlinePayment.allCardOrientedValidityCheck(cardNo, validYr, cvvNo);
 			if (valid) {
-				response.sendRedirect("login.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("cart");
+				dispatcher.forward(request, response);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

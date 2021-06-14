@@ -15,7 +15,7 @@
 	<tbody>
 	<tr>
 	<th scope="col"><label for=userName>Name*</label></th>
-	<th scope="col"><input type=text name="name" id="name" placeholder="Lower Case Name" 
+	<th scope="col"><input type=text name="name" id="name" placeholder="Lower Case(No Space)" 
 	onchange="nameError()" pattern="[a-z]{3,30}" required autofocus></th> 
 	</tr>
 	

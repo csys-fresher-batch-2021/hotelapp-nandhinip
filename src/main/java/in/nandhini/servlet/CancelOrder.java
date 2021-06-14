@@ -29,8 +29,7 @@ public class CancelOrder extends HttpServlet {
 		try {
 			String idStr = request.getParameter("id");
 			Integer id = Integer.parseInt(idStr);
-			boolean cancelled = Cart.cancelOrder(id);
-			request.setAttribute("CANCELLED", cancelled);
+			Cart.cancelOrder(id);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("cart");
 			dispatcher.forward(request, response);
 		} catch (NumberFormatException | ServletException | IOException e) {
