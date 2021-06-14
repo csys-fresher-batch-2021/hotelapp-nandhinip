@@ -20,7 +20,7 @@ public class SignUp extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		PrintWriter out = response.getWriter();
+		
 		// getting user name, mobile number and password
 		String name = request.getParameter("name");
 		long mobileNo = 0;
@@ -39,8 +39,9 @@ public class SignUp extends HttpServlet {
 
 		// checking the details are valid or not
 		try {
+			PrintWriter out = response.getWriter();
 			Boolean valid = UserValidation.checkAndAddUser(mobileNo, pwd, name, gender);
-			if (valid) {
+			if (Boolean.TRUE.equals(valid)) {
 				response.sendRedirect("login.jsp");// if valid redirect to login page
 			} else if (exists) {
 				out.println("<script type=\"text/javascript\">");

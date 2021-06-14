@@ -1,11 +1,9 @@
 <!DOCTYPE html>
-<%@page import="in.nandhini.model.MessageConstants"%>
-<%@page import="in.nandhini.service.DisplayRooms"%>
-<%@page import="java.util.Map"%>
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Room Types</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
@@ -16,12 +14,7 @@
 			<div class="card-body">
 				<img class="rounded mx-auto d-block" width="400" height="250"
 					src="MountainView.jpg" alt="Card image cap">
-				<%
-				double price = DisplayRooms.getRoomAvailable().get(MessageConstants.MOUNTAINVIEW);
-				%>
-				<h5 class="card-title"><%=price%>
-					INR
-				</h5>
+				<h5 class="card-title" id="mv"></h5>
 				<h6>Accommodation: 5 Members</h6>
 				<p class="card-text">Amazing view of mountain will have your
 					heart. If you are the nature lover, then It's the place for you.</p>
@@ -34,12 +27,7 @@
 			<div class="card-body">
 				<img class="rounded mx-auto d-block" width="400" height="250"
 					src="OceanView.jpg" alt="Card image cap">
-				<%
-				double ovPrice = DisplayRooms.getRoomAvailable().get(MessageConstants.OCEANVIEW);
-				%>
-				<h5 class="card-title"><%=ovPrice%>
-					INR
-				</h5>
+				<h5 class="card-title" id="ov"></h5>
 				<h6>Accommodation: 5 Members</h6>
 				<p class="card-text">Fascinating view and the sound of waves
 					touching the shore will touch your heart eventually. If you are
@@ -53,12 +41,7 @@
 			<div class="card-body">
 				<img class="rounded mx-auto d-block" width="400" height="250"
 					src="CityView.jpg" alt="Card image cap">
-				<%
-				double cvPrice = DisplayRooms.getRoomAvailable().get(MessageConstants.OCEANVIEW);
-				%>
-				<h5 class="card-title"><%=cvPrice%>
-					INR
-				</h5>
+				<h5 class="card-title" id="nv"></h5>
 				<h6>Accommodation: 5 Members</h6>
 				<p class="card-text">The Stunning view of busy city will create
 					anxiety to get down and explore. The suite is waiting for you.</p>
@@ -67,9 +50,22 @@
 		<br />
 
 		<div>
-			<a href="index.jsp" class="btn btn-secondary" role="button">Previous</a>
+			<a href="javascript:history.go(-1);" class="btn btn-secondary">Back</a>
 		</div>
 		<br />
+		<script type="text/javascript">
+		function getRoom(){
+			console.log("Fetching");
+			let url="DisplayRoom"
+			axios.get(url).then(res=> {
+				let result = res.data;
+				document.getElementById("mv").innerHTML=result['Mountain View']+" INR";
+				document.getElementById("ov").innerHTML=result['Night Ocean View']+" INR";
+				document.getElementById("nv").innerHTML=result['Night City View']+" INR"
+			})
+		}
+		getRoom();
+		</script>
 	</main>
 	<jsp:include page="Footer.jsp"></jsp:include>
 </body>
