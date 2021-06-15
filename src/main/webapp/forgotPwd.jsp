@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
 <meta charset="ISO-8859-1">
 <title>Forgot Password</title>
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
-		<form  onsubmit="getPwd()">
-		<h3>Get Password</h3>
+		<form onsubmit="getPwd()">
+			<h3>Get Password</h3>
 			<table class="table table-borderless">
 				<caption></caption>
 				<tbody>
@@ -21,13 +22,14 @@
 							pattern="[0-9]{10}" min="0" required></th>
 					</tr>
 					<tr>
-						<th scope="col"><button type="submit" class="btn btn-success">Forgot Password</button>
-					    <button type="reset"  class="btn btn-danger">Reset</button>
+						<th scope="col"><button type="submit" class="btn btn-success">Forgot
+								Password</button>
+							<button type="reset" class="btn btn-danger">Reset</button>
 					</tr>
 				</tbody>
 			</table>
-		
-		<script type="text/javascript">
+
+			<script type="text/javascript">
 			function getPwd(){
 				event.preventDefault();
 				console.log("Fetching");
@@ -46,7 +48,7 @@
 				})
 			}
 		</script>
-		
+
 		</form>
 	</main>
 	<jsp:include page="Footer.jsp"></jsp:include>

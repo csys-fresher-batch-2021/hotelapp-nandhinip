@@ -74,7 +74,7 @@ public class BillManager {
 		// create map to store all price details
 		LinkedHashMap<String, Double> bill = new LinkedHashMap<>();
 		bill.put(roomChoice, roomCharge);
-		bill.put(acChoice, acCharge);
+		bill.put(acChoice.concat(" (per Hour)"), acCharge);
 		bill.put(poolChoice, poolCharge);
 		bill.put(pickUpDropChoice, pickUpDropCharge);
 		bill.put("Total", totalAmount);

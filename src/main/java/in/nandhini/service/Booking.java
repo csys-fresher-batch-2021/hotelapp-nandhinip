@@ -60,9 +60,9 @@ public class Booking {
 	public static List<Integer> getAvailability() {
 		List<Integer> avail = null;
 		try {
-			int mv = BookingDAO.getMVRoomAvailability();
-			int ov = BookingDAO.getOVRoomAvailability();
-			int cv = BookingDAO.getCVRoomAvailability();
+			int mv = BookingDAO.getRoomAvailability("Mountain View");
+			int ov = BookingDAO.getRoomAvailability("Night Ocean View");
+			int cv = BookingDAO.getRoomAvailability("Night City View");
 			avail = new ArrayList<>(Arrays.asList(mv, ov, cv));
 		} catch (Exception e) {
 			e.printStackTrace();

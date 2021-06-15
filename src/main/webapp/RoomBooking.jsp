@@ -5,84 +5,127 @@
 <title>room Booking</title>
 <style>
 div {
-  margin-bottom: 15px;
-  padding: 4px 12px;
-}
-.info {
-  background-color: #e7f3fe;
-  border-left: 6px solid #2196F3;
+	margin-bottom: 15px;
+	padding: 4px 12px;
 }
 
+.info {
+	background-color: #e7f3fe;
+	border-left: 6px solid #2196F3;
+}
 </style>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 </head>
 <body>
-
+	<c:if test="${empty LOGGED_IN_USER}">
+		<c:redirect url="login.jsp?errorMessage=Kindly Login Before Booking" />
+	</c:if>
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
-		<form id="orderForm" action="BookRoom" method="post">
-			<h6>Room Booking</h6>
-			<table class="table table-borderless">
-			<caption></caption>
-			<tbody>
-			<tr>
-				<th scope="col"><label for="cid">Check-In Date</label> </th>
-				<th scope="col">
-				<input type="dateTime-local" name="cid" id="cid" width="312" required oninput="onCINSelected()">
-				</th>
-			</tr>
-			
-			<tr>
-				<th scope="col"><label for="cod">Check-out Date</label> </th>
-				<th scope="col"><input type="dateTime-local"id="cod" name="cod" width="312" required></th>
-			</tr>
+		<div class="row">
+			<div class="col-8">
+				<form id="orderForm" action="BookRoom" method="post">
+					<h6>Room Booking</h6>
+					<table class="table table-borderless">
+						<caption></caption>
+						<tbody>
+							<tr>
+								<th scope="col"><label for="cid">Check-In Date</label></th>
+								<th scope="col"><input type="dateTime-local" name="cid"
+									id="cid" width="312" required oninput="onCINSelected()">
+								</th>
+							</tr>
 
-			<tr>
-				<th scope="col"><label for="suiteType">Suite Type</label> </th>
-				<th scope="col"><select class="form-control" id="suiteType" name="suiteType" required>
-					<option value="" disabled="disabled" selected="selected">Select an option</option>
-					<option value="Mountain View">Mountain View</option>
-					<option value="Night Ocean View">Night Ocean View</option>
-					<option value="Night City View">Night City View</option>
-				</select></th>
-			</tr>
-			
+							<tr>
+								<th scope="col"><label for="cod">Check-out Date</label></th>
+								<th scope="col"><input type="dateTime-local" id="cod"
+									name="cod" width="312" required></th>
+							</tr>
 
-			<tr>
-				<th scope="col"><label for="AcOption">AC/FAN</label> </th>
-				<th scope="col"><select class="form-control" name="AcOption" id="AcOption" required>
-				<option value="" disabled="disabled" selected="selected">Select an option</option>
-				<option value="AC">AC</option>
-				<option value="FAN">Fan</option>
-				</select></th>
-			</tr>
+							<tr>
+								<th scope="col"><label for="suiteType">Suite Type</label></th>
+								<th scope="col"><select class="form-control" id="suiteType"
+									name="suiteType" required>
+										<option value="" disabled="disabled" selected="selected">Select
+											an option</option>
+										<option value="Mountain View">Mountain View</option>
+										<option value="Night Ocean View">Night Ocean View</option>
+										<option value="Night City View">Night City View</option>
+								</select></th>
+							</tr>
 
-			<tr>
-				<th scope="col"><label for="poolOption">Need a Pool Access</label></th>
-				 <th scope="col"><select class="form-control" name="poolOption" id="poolOption" required="required">
-				 <option value="" disabled="disabled" selected="selected">Select an option</option>
-				 <option value="Pool Access">Yes</option>
-				 <option value="Without Pool Access">No</option>
-				 </select></th>
-			</tr>
-			
 
-			<tr>
-				<th scope="col"><label for="transportOption">Need a Transport Access</label></th>
-				 <th scope="col"><select class="form-control" name="transportOption" id="transportOption" required>
-				 <option value="" disabled="disabled" selected="selected">Select an option</option>
-				 <option value="With Transport">Yes</option>
-				 <option value="Without Transport">No</option>
-				 </select></th>
-			</tr>
-			
-			<tr>
-			<th scope="col"><button type="submit" class="btn btn-secondary">Estimate Price</button></th>
-			</tr>
+							<tr>
+								<th scope="col"><label for="AcOption">AC/FAN</label></th>
+								<th scope="col"><select class="form-control"
+									name="AcOption" id="AcOption" required>
+										<option value="" disabled="disabled" selected="selected">Select
+											an option</option>
+										<option value="AC"
+											${param.facility eq 'ac'? 'selected="true"' : ''}>AC</option>
+										<option value="FAN">Fan</option>
+								</select></th>
+							</tr>
 
-			</tbody>
-			</table>
-			
-			<script>
+							<tr>
+								<th scope="col"><label for="poolOption">Need a Pool
+										Access</label></th>
+								<th scope="col"><select class="form-control"
+									name="poolOption" id="poolOption" required="required">
+										<option value="" disabled="disabled" selected="selected">Select
+											an option</option>
+										<option ${param.facility eq 'pool'? 'selected="true"' : ''}
+											value="Pool Access">Yes</option>
+										<option value="Without Pool Access">No</option>
+								</select></th>
+							</tr>
+
+
+							<tr>
+								<th scope="col"><label for="transportOption">Need a
+										Transport Access</label></th>
+								<th scope="col"><select class="form-control"
+									name="transportOption" id="transportOption" required>
+										<option value="" disabled="disabled" selected="selected">Select
+											an option</option>
+										<option value="With Transport"
+											${param.facility eq 'car'? 'selected="true"' : ''}>Yes</option>
+										<option value="Without Transport">No</option>
+								</select></th>
+							</tr>
+
+							<tr>
+								<th scope="col"><button type="submit"
+										class="btn btn-secondary">Estimate Price</button></th>
+							</tr>
+
+						</tbody>
+					</table>
+
+
+				</form>
+			</div>
+			<div class="col-4">
+
+				<div class="info">
+					<strong>Option will be disabled, if there is no
+						availability</strong>
+					<p>
+						<strong>! </strong> Mountain View Room: Availability - 2
+					</p>
+					<p>
+						<strong>! </strong> Night Ocean View Room: Availability - 10
+					</p>
+					<p>
+						<strong>! </strong> Night City View Room: Availability - 10
+					</p>
+				</div>
+			</div>
+		</div>
+	</main>
+
+</body>
+<script>
 				var today = new Date()
 				var jsonToday = today.toJSON()
 				document.getElementById("cid").setAttribute("min",jsonToday.substr(0, 16))
@@ -108,15 +151,5 @@ div {
 					}
 				availability();
 			</script>
-		</form>
-		<div  class="info">
-		<strong>Option will be disabled, if there is no availability</strong>
-		 <p><strong>! </strong> Mountain View Room: Availability - 2</p>
-		 <p><strong>! </strong> Night Ocean View Room: Availability - 10</p>
-		  <p><strong>! </strong> Night City View Room: Availability - 10</p>
-		  </div>
-		</main>
-
-</body>
 <jsp:include page="Footer.jsp"></jsp:include>
 </html>

@@ -1,30 +1,28 @@
 <!DOCTYPE html>
-<%@page import="in.nandhini.model.BookingInfo"%>
-<%@page import="java.util.List"%>
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Room Booking Details</title>
 <style>
 div {
-  margin-bottom: 15px;
-  padding: 4px 12px;
-}
-.info {
-  background-color: #e7f3fe;
-  border-left: 6px solid #2196F3;
+	margin-bottom: 15px;
+	padding: 4px 12px;
 }
 
+.info {
+	background-color: #e7f3fe;
+	border-left: 6px solid #2196F3;
+}
 </style>
 </head>
-<body onload="search()" >
+<body onload="search()">
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
 		<h5>Room Booking Details</h5>
-		<label for=userName>Name</label>
-		<input type=text name="name" id="name" placeholder="Lower Case Name" 
-			onchange="search()" pattern="[a-z]{3,30}" required autofocus>
-			<p id = "GFG_DOWN">  </p>
+		<label for=userName>Name</label> <input type=text name="name"
+			id="name" placeholder="Lower Case Name" onchange="search()"
+			pattern="[a-z]{3,30}" required autofocus>
+		<p id="GFG_DOWN"></p>
 		<table id="tbl" class="table table-bordered">
 			<caption></caption>
 		</table>
@@ -52,7 +50,7 @@ div {
 				tableData+= '<tbody>'
 			    for(i = 0;i < data.length; i++){
 			    	tableData+= '<tr>';
-			    	tableData+= '<td>' + data[i].mob_No + '</td>';
+			    	tableData+= '<td>' + data[i].mobNo + '</td>';
 			    	tableData+= '<td>' + data[i].name + '</td>';
 			    	tableData+= '<td>' + data[i].bookDate+ '</td>';
 			    	tableData+= '<td>' + data[i].checkIn + '</td>';
@@ -75,10 +73,11 @@ div {
 		}
 		
 		</script>
-		
+
 		<div class="info">
-	 	 <p><strong>! </strong> If there is no data regarding the name.
-	 	  Refresh it, to get all details</p>
+			<p>
+				<strong>! </strong> Not Cancelled:Undefined
+			</p>
 		</div>
 	</main>
 	<jsp:include page="Footer.jsp"></jsp:include>

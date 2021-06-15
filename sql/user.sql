@@ -9,7 +9,7 @@ create table registered_user(
 );
 
 insert into registered_user(mobile_No,user_name,pass_word,gender)
-values ( 9999888889,pert,qwer1234,Female)
+values ( 9999888889,'pert','qwer1234','Female')
 
 /**
  * room booking table
@@ -31,6 +31,6 @@ CREATE TABLE bookRoom(
 
 insert into bookRoom(mobile_No,booked_date,check_in,
 suite_Type,ac_choice,pool_choice,transport_choice,bill_amount_estimation,
-status) values ( 9999888889,2021-08-08,2021-07-06,
-Mountain View,AC,pool Access,With Transport,31234.9,true)
+status) values ( 9999888889,'2021-08-08 07:00','2021-07-06 7:00',
+'Mountain View','AC','pool Access','With Transport',31234.9,true)
 

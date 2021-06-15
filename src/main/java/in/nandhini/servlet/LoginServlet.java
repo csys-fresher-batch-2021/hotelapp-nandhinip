@@ -1,7 +1,6 @@
 package in.nandhini.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -26,7 +25,6 @@ public class LoginServlet extends HttpServlet {
 		 * get data from web page
 		 */
 		try {
-			PrintWriter out = response.getWriter();
 			HttpSession session = request.getSession();
 			// Step 1: Get form values
 			String userPh = request.getParameter("userPh");
@@ -55,15 +53,11 @@ public class LoginServlet extends HttpServlet {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
 				dispatcher.forward(request, response);
 			} else if (exists) {
-				out.println("<script type=\"text/javascript\">");
-				out.println("alert('Invalid password');");
-				out.println("location='login.jsp';");
-				out.println("</script>");
+				request.setAttribute("errorMessage", "Invalid password!");
+				request.getRequestDispatcher("login.jsp").forward(request, response);
 			} else {
-				out.println("<script type=\"text/javascript\">");
-				out.println("alert('User does not Exists!! Kindly register');");
-				out.println("location='SignUp.jsp';");
-				out.println("</script>");
+				request.setAttribute("errorMessage", "User does not Exists!! Kindly register");
+				request.getRequestDispatcher("login.jsp").forward(request, response);
 			}
 		} catch (InvalidException | IOException | ServletException e) {
 			e.printStackTrace();
