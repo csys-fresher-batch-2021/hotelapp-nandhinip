@@ -20,7 +20,7 @@ img {
 
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
-
+		<p class="text-danger">${message}</p>
 		<c:if test="${empty CART}">
 			<br>
 			<br />
