@@ -45,7 +45,6 @@ public class LoginServlet extends HttpServlet {
 
 			if (adminValid) {
 				session.setAttribute("LOGGED_IN_USER", "admin");
-				response.sendRedirect("AdminView.jsp");
 				RequestDispatcher dispatcher = request.getRequestDispatcher("AdminView.jsp");
 				dispatcher.forward(request, response);
 			} else if (userValid) {
