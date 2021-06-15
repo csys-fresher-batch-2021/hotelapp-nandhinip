@@ -19,8 +19,9 @@ public class SignUp extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws IOException, ServletException {
+
 		// getting user name, mobile number and password
 		String name = request.getParameter("name");
 		long mobileNo = 0;
@@ -41,7 +42,7 @@ public class SignUp extends HttpServlet {
 		try {
 			Boolean valid = UserValidation.checkAndAddUser(mobileNo, pwd, name, gender);
 			if (Boolean.TRUE.equals(valid)) {
-				response.sendRedirect("login.jsp");// if valid redirect to login page
+				request.getRequestDispatcher("login.jsp").forward(request, response);
 			} else if (exists) {
 				request.setAttribute("errorMessage", "User Already Exists!");
 				request.getRequestDispatcher("SignUp.jsp").forward(request, response);
