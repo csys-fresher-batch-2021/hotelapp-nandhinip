@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-<%@page import="in.nandhini.model.CartInfo"%>
-<%@page import="java.util.List"%>
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
@@ -22,7 +20,7 @@ img {
 
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
-		<h3>Your Cart</h3>
+
 		<c:if test="${empty CART}">
 			<br>
 			<br />
@@ -43,7 +41,7 @@ img {
 							<li class="list-group-item">${yc.getTransport() }</li>
 							<li class="list-group-item">INR. ${yc.getAmount()}</li>
 							<li class="list-group-item"><a
-								href="CancelOrder?id=${yc.getId()} ">Remove From Cart</a></li>
+								href="CancelOrder?id=${yc.getId()}">Remove From Cart</a></li>
 						</ul>
 					</div>
 				</div>

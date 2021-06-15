@@ -136,12 +136,12 @@ public class BookingDAO {
 	 * @return
 	 * @throws Exception
 	 */
-	public static int getMVRoomAvailability() throws DBException {
+	public static int getRoomAvailability(String room) throws DBException {
 
 		Connection con = null;
 		PreparedStatement pst = null;
 		ResultSet rs = null;
-		int mv = 0;
+		int availability = 0;
 		try {
 
 			// Step 1: Get the connection
@@ -149,7 +149,7 @@ public class BookingDAO {
 
 			// Step 2: Query
 			String sql = "SELECT COUNT(*) as availability from bookRoom WHERE check_in >= now()"
-					+ "and status=true AND suite_Type='Mountain View'";
+					+ "and status=true AND suite_Type=" + "'" + room + "'";
 			pst = con.prepareStatement(sql);
 
 			// Step 3: execute query
@@ -157,7 +157,7 @@ public class BookingDAO {
 
 			if (rs.next()) {
 
-				mv = rs.getInt("availability");
+				availability = rs.getInt("availability");
 			}
 
 		} catch (SQLException e) {
@@ -166,85 +166,7 @@ public class BookingDAO {
 		} finally {
 			DBClose.close(pst, con);
 		}
-		return mv;
-	}
-
-	/**
-	 * Check "Night Ocean View Room" availability
-	 * 
-	 * @return
-	 * @throws Exception
-	 */
-	public static int getOVRoomAvailability() throws DBException {
-
-		Connection con = null;
-		PreparedStatement pst = null;
-		ResultSet rs = null;
-		int ov = 0;
-		try {
-
-			// Step 1: Get the connection
-			con = DBConnection.getConnection();
-
-			// Step 2: Query
-			String sql = "SELECT COUNT(*) as Count from bookRoom WHERE check_in >= now()"
-					+ "and status=true AND suite_Type='Night Ocean View'";
-			pst = con.prepareStatement(sql);
-
-			// Step 3: execute query
-			rs = pst.executeQuery();
-
-			if (rs.next()) {
-
-				ov = rs.getInt("Count");
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new DBException(MessageConstants.AVAILABILITY);
-		} finally {
-			DBClose.close(pst, con);
-		}
-		return ov;
-	}
-
-	/**
-	 * Check "Night City View Room" availability
-	 * 
-	 * @return
-	 * @throws Exception
-	 */
-	public static int getCVRoomAvailability() throws DBException {
-
-		Connection con = null;
-		PreparedStatement pst = null;
-		ResultSet rs = null;
-		int cv = 0;
-		try {
-
-			// Step 1: Get the connection
-			con = DBConnection.getConnection();
-
-			// Step 2: Query
-			String sql = "SELECT COUNT(*) as Count from bookRoom WHERE check_in >= now()"
-					+ "and status=true AND suite_Type=''";
-			pst = con.prepareStatement(sql);
-
-			// Step 3: execute query
-			rs = pst.executeQuery();
-
-			if (rs.next()) {
-
-				cv = rs.getInt("Count");
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new DBException(MessageConstants.AVAILABILITY);
-		} finally {
-			DBClose.close(pst, con);
-		}
-		return cv;
+		return availability;
 	}
 
 }

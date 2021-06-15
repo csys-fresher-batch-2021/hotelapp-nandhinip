@@ -1,8 +1,8 @@
 package in.nandhini.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,8 +19,9 @@ public class SignUp extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws IOException, ServletException {
+
 		// getting user name, mobile number and password
 		String name = request.getParameter("name");
 		long mobileNo = 0;
@@ -39,20 +40,15 @@ public class SignUp extends HttpServlet {
 
 		// checking the details are valid or not
 		try {
-			PrintWriter out = response.getWriter();
 			Boolean valid = UserValidation.checkAndAddUser(mobileNo, pwd, name, gender);
 			if (Boolean.TRUE.equals(valid)) {
-				response.sendRedirect("login.jsp");// if valid redirect to login page
+				request.getRequestDispatcher("login.jsp").forward(request, response);
 			} else if (exists) {
-				out.println("<script type=\"text/javascript\">");
-				out.println("alert('User Already Exists!');");
-				out.println("location='SignUp.jsp';");
-				out.println("</script>");
+				request.setAttribute("errorMessage", "User Already Exists!");
+				request.getRequestDispatcher("SignUp.jsp").forward(request, response);
 			} else {
-				out.println("<script type=\"text/javascript\">");
-				out.println("alert('Use Valid Credentials as per given instructions!');");
-				out.println("location='SignUp.jsp';");
-				out.println("</script>");
+				request.setAttribute("errorMessage", "Use Valid Credentials as per given instructions!");
+				request.getRequestDispatcher("SignUp.jsp").forward(request, response);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

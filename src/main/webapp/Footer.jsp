@@ -1,15 +1,30 @@
-<footer>
-	<div class="card">
-		<div class="card bg-dark text-white">
-			<h5 class="card-header">Address</h5>
-			<div class="card-body">
-				<h5 class="card-title">Bliss Hotel</h5>
-				<p class="card-text">888,Peace Avenue,Peace Land</p>
-				<h6>Contact</h6>
-				<p>Phone No: 9999 8888 89</p>
-				<p>e-Mail: Bliss@peace.com</p>
-				<h5>Have a BLISS!! Visit Again!!!</h5>
-			</div>
-		</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="ISO-8859-1">
+<style>
+.last-content {
+	margin-top: 10px;
+	padding-bottom: 50px;
+}
+
+.footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 50px;
+	text-align: center;
+	color: white;
+	background-color: black;
+}
+</style>
+<title>footer</title>
+</head>
+<body>
+	<div class="last-content"></div>
+	<div class="footer">
+		For queries contact@ <a href="mailto:someone@example.com">customercare@bliss.com</a>
 	</div>
-</footer>
+</body>
+
+</html>

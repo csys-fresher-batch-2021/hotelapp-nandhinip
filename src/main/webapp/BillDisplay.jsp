@@ -6,8 +6,6 @@
 <title>Your Bill</title>
 </head>
 <body>
-
-
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
 		<form action="BillDisplay" method="get">

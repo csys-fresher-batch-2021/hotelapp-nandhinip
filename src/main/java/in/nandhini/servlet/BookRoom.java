@@ -37,6 +37,7 @@ public class BookRoom extends HttpServlet {
 		String poolOption = request.getParameter("poolOption");
 		String transport = request.getParameter("transportOption");
 		String suiteType = request.getParameter("suiteType");
+		
 
 		// setting choices in session, to get that in BillDisplay Servlet
 		session.setAttribute("CHECK_IN", checkInDate);

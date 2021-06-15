@@ -3,6 +3,7 @@ package in.nandhini.servlet;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,7 +33,8 @@ public class cart extends HttpServlet {
 			Long mobNo = (Long) session.getAttribute("MOB_NO");
 			List<CartInfo> yourCart = Cart.cartDetails(mobNo);
 			session.setAttribute("CART", yourCart);
-			response.sendRedirect("Cart.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("Cart.jsp");
+			dispatcher.forward(request, response);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

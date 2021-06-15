@@ -8,6 +8,9 @@
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
 	<h3>Sign Up</h3>
+
+	<p class="text-danger">${errorMessage}</p>
+
 	<form action="SignUp" method="post">
 	
 	<table class="table table-borderless">

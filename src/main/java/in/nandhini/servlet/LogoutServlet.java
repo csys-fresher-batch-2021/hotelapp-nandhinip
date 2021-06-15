@@ -1,6 +1,8 @@
 package in.nandhini.servlet;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,7 +29,8 @@ public class LogoutServlet extends HttpServlet {
 		 */
 		try {
 			session.removeAttribute("LOGGED_IN_USER");
-			response.sendRedirect("index.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+			dispatcher.forward(request, response);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
