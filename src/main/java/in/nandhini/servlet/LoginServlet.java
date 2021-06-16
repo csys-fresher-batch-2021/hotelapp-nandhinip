@@ -46,6 +46,7 @@ public class LoginServlet extends HttpServlet {
 			if (adminValid) {
 				session.setAttribute("LOGGED_IN_USER", "admin");
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/AdminView.jsp");
+
 				dispatcher.forward(request, response);
 			} else if (userValid) {
 				String username = UserManager.getName(userMobNo);
@@ -55,7 +56,7 @@ public class LoginServlet extends HttpServlet {
 				dispatcher.forward(request, response);
 			} else if (exists) {
 				request.setAttribute("errorMessage", "Invalid password!");
-				request.getRequestDispatcher("login.jsp").forward(request, response);
+				request.getRequestDispatcher("/login.jsp").forward(request, response);
 			} else {
 				request.setAttribute("errorMessage", "User does not Exists!! Kindly register");
 				request.getRequestDispatcher("/login.jsp").forward(request, response);
