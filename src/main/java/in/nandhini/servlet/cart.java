@@ -33,7 +33,7 @@ public class cart extends HttpServlet {
 			Long mobNo = (Long) session.getAttribute("MOB_NO");
 			List<CartInfo> yourCart = Cart.cartDetails(mobNo);
 			session.setAttribute("CART", yourCart);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("Cart.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/Cart.jsp");
 			dispatcher.forward(request, response);
 		} catch (IOException e) {
 			e.printStackTrace();

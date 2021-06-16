@@ -45,20 +45,21 @@ public class LoginServlet extends HttpServlet {
 
 			if (adminValid) {
 				session.setAttribute("LOGGED_IN_USER", "admin");
-				RequestDispatcher dispatcher = request.getRequestDispatcher("AdminView.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/AdminView.jsp");
+
 				dispatcher.forward(request, response);
 			} else if (userValid) {
 				String username = UserManager.getName(userMobNo);
 				session.setAttribute("LOGGED_IN_USER", username);
 				session.setAttribute("MOB_NO", userMobNo);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
 				dispatcher.forward(request, response);
 			} else if (exists) {
 				request.setAttribute("errorMessage", "Invalid password!");
-				request.getRequestDispatcher("login.jsp").forward(request, response);
+				request.getRequestDispatcher("/login.jsp").forward(request, response);
 			} else {
 				request.setAttribute("errorMessage", "User does not Exists!! Kindly register");
-				request.getRequestDispatcher("login.jsp").forward(request, response);
+				request.getRequestDispatcher("/login.jsp").forward(request, response);
 			}
 		} catch (InvalidException | IOException | ServletException e) {
 			e.printStackTrace();

@@ -14,7 +14,7 @@
 			comforts and convenience of a modern hotel.</p>
 		<img class="img-fluid" src="Entrance.jpg" alt="Card image cap">
 		<div>
-			<h3 class="text-center">Let's explore the HOTEL with 'BLISS'</h3>
+			<h3 class="font-italic text-center">Let's explore the HOTEL with 'BLISS'</h3>
 		</div>
 		<div class="row">
 			<div class="col-sm-6">

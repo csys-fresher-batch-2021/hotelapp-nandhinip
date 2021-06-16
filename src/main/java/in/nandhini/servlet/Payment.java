@@ -29,7 +29,7 @@ public class Payment extends HttpServlet {
 		try {
 			valid = OnlinePayment.allCardOrientedValidityCheck(cardNo, validYr, cvvNo);
 			if (valid) {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("cart");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/cart");
 				dispatcher.forward(request, response);
 			}
 		} catch (IOException e) {

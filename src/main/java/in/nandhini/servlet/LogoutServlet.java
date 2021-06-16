@@ -29,7 +29,7 @@ public class LogoutServlet extends HttpServlet {
 		 */
 		try {
 			session.removeAttribute("LOGGED_IN_USER");
-			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
 			dispatcher.forward(request, response);
 		} catch (IOException e) {
 			e.printStackTrace();

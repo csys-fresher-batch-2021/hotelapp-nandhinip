@@ -42,13 +42,13 @@ public class SignUp extends HttpServlet {
 		try {
 			Boolean valid = UserValidation.checkAndAddUser(mobileNo, pwd, name, gender);
 			if (Boolean.TRUE.equals(valid)) {
-				request.getRequestDispatcher("login.jsp").forward(request, response);
+				request.getRequestDispatcher("/login.jsp").forward(request, response);
 			} else if (exists) {
 				request.setAttribute("errorMessage", "User Already Exists!");
-				request.getRequestDispatcher("SignUp.jsp").forward(request, response);
+				request.getRequestDispatcher("/SignUp.jsp").forward(request, response);
 			} else {
 				request.setAttribute("errorMessage", "Use Valid Credentials as per given instructions!");
-				request.getRequestDispatcher("SignUp.jsp").forward(request, response);
+				request.getRequestDispatcher("/SignUp.jsp").forward(request, response);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
