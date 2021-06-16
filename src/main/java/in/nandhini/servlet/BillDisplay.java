@@ -52,7 +52,7 @@ public class BillDisplay extends HttpServlet {
 		choice.add(price);
 		try {
 			Booking.bookRoomData(choice);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("payment.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/payment.jsp");
 			dispatcher.forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -32,7 +32,7 @@ public class CancelOrder extends HttpServlet {
 			boolean cancelled=Cart.cancelOrder(id);
 			if(cancelled) {
 			request.setAttribute("message", "Booking Cancelled!");
-			RequestDispatcher dispatcher = request.getRequestDispatcher("cart");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/cart");
 			dispatcher.forward(request, response);
 			}
 		} catch (NumberFormatException | ServletException | IOException e) {
