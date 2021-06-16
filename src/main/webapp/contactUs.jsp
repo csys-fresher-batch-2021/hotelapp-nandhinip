@@ -35,7 +35,7 @@ body {
 								<div class="card-body text-center">
 									<i class="fa fa-phone fa-5x mb-3" aria-hidden="true"></i>
 									<h4 class="text-uppercase mb-5">call us</h4>
-									<a href="tel:+4733378901">+91 9999 8888 89</a>
+									<a href="tel:+91 9999 8888 89">+91 9999 8888 89</a>
 								</div>
 							</div>
 						</div>
@@ -59,7 +59,7 @@ body {
 								<div class="card-body text-center">
 									<i class="fa fa-globe fa-5x mb-3" aria-hidden="true"></i>
 									<h4 class="text-uppercase mb-5">e-mail</h4>
-									<a href="mailto:someone@example.com">customercare@bliss.com</a>
+									<a href="mailto:customercare@bliss.com">customercare@bliss.com</a>
 								</div>
 							</div>
 						</div>
