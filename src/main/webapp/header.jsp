@@ -59,7 +59,7 @@
 					</c:when>
 					<c:when test="${not empty LOGGED_IN_USER}">
 						<li class="glyphicon glyphicon-shopping-cart"><a
-							class="nav-link" href="cart">Your Cart</a></li>
+							class="nav-link" href="cart">My Booking</a></li>
 						<li class="nav-item"><a class="nav-link" href="contactUs.jsp">Contact
 								Us</a></li>
 						<li class="nav-item"><a class="nav-link" href="#">Welcome
