@@ -14,7 +14,7 @@ img {
 	margin-right: auto;
 }
 </style>
-<title>Cart</title>
+<title>My Booking</title>
 </head>
 <body>
 
@@ -32,7 +32,7 @@ img {
 			<c:forEach var="yc" items="${CART}">
 				<div class="col d-flex justify-content-center">
 					<div class="card" style="width: 18rem;">
-						<div class="card-header">Your Cart</div>
+						<div class="card-header">My Booking</div>
 						<ul class="list-group list-group-flush">
 							<li class="list-group-item">${yc.getCheckIn()}</li>
 							<li class="list-group-item">${yc.getSuite()}</li>
@@ -41,7 +41,7 @@ img {
 							<li class="list-group-item">${yc.getTransport() }</li>
 							<li class="list-group-item">INR. ${yc.getAmount()}</li>
 							<li class="list-group-item"><a
-								href="CancelOrder?id=${yc.getId()}">Remove From Cart</a></li>
+								href="CancelOrder?id=${yc.getId()}">Cancel Booking</a></li>
 						</ul>
 					</div>
 				</div>
